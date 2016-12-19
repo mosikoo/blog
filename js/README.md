@@ -40,3 +40,36 @@ var factorial = (n, total=1) => {
 }
 ```
 复杂度为O(1)
+
+
+##函数柯里化
+>意义在于把函数完全变成"接受一个参数，返回一个值的固定形式"
+
+常见的柯里化的例子
+
+```javascript
+var foo = function(a, b) {
+	return a+b;
+}
+
+var bar = foo.bind(null, 1);
+bar(2);
+```
+或者
+
+```javascript
+var foo = function(a) {
+	return function(b) {
+		return a + b;
+	}
+}
+var bar = foo(1);
+bar(2);
+```
+顺带提下ES5中bind实现的简单原理
+
+```javascript
+var bind = function(context ,fn) {
+	return fn.apply(context, arguments);
+}
+```

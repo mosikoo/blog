@@ -8,7 +8,7 @@
 
 目录
 
-* [js专题](https://github.com/mosikoo/blog/js)
+* [js专题](https://github.com/mosikoo/blog/tree/master/js)
 	* 尾调化优化
 	* 柯里化
 	* 函数式编程
