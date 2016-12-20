@@ -17,4 +17,6 @@
 	* prototype
 	* promise
 * [前端杂谈](https://github.com/mosikoo/blog/article)
+* [插件安装](https://github.com/mosikoo/blog)
+	* [eslint安装](https://github.com/mosikoo/blog)
 * [git hook总结](https://github.com/mosikoo/blog/git)
