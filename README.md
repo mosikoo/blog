@@ -16,6 +16,7 @@
 	* 原型
 	* prototype
 	* promise
+* [eslint安装指南](https://github.com/mosikoo/blog/tree/master/eslint)
 * [前端杂谈](https://github.com/mosikoo/blog/article)
 * [插件安装](https://github.com/mosikoo/blog)
 	* [eslint安装](https://github.com/mosikoo/blog)
