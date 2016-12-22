@@ -46,7 +46,7 @@ npm install eslint -g
         "paths": {
             "linux": [],
             "osx": [
-                "/usr/local/bin/node"  //node的路径
+                "/usr/local/bin"  //node的路径可以用[which node]指令查看
             ],
             "windows": []
         },
@@ -75,3 +75,36 @@ npm install eslint -g
 }
 ```
 4、在项目用配置.eslintrc文件，来配置对应的规则，且用npm安装babel-eslint及对应的eslint规则的npm包
+
+---
+.eslintrc文件如下所示
+
+```javascript
+{
+  "extends": "@ali/eslint-config-ais/react",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "react/jsx-no-bind": 0,
+    "react/sort-comp": 0,
+    "react/no-render-return-value": 0,
+    "react/no-string-refs": 0,
+    "no-prototype-builtins": 0,
+    "no-global-assign": 0,
+    "no-unsafe-negation": 0,
+    "comma-dangle": [2, "never"],
+    "no-shadow": 0,
+    "no-plusplus": 0
+  },
+  "plugins": [
+    "react"
+  ],
+  "globals": {
+    "define": true
+  }
+}
+```
+
