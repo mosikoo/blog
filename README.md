@@ -20,6 +20,7 @@
 * [前端杂谈](https://github.com/mosikoo/blog/article)
 	* [webpack基础及性能优化]()
 	* [开发环境下package、webpack、代码中配置]()
+	* [开发dwebpack中的loader]()
 * [插件安装](https://github.com/mosikoo/blog)
 	* [eslint安装指南](https://github.com/mosikoo/blog/tree/master/eslint)
 	* [nvm简介](https://github.com/mosikoo/blog/tree/master/nvm)
