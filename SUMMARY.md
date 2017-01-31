@@ -2,7 +2,7 @@
 
 * [Introduction](./README.md)
 
-* [1. js专题](./js/index.md)
+### 1. js专题
   * [1.1 尾调化优化](./js/index.md#尾调化优化)
   * [1.2 尾递归](./js/index.md#尾递归)
   * [1.3 柯里化](./js/index.md#函数柯里化)
