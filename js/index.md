@@ -73,3 +73,34 @@ var bind = function(context ,fn) {
 	return fn.apply(context, arguments);
 }
 ```
+
+## in与hasOwnProperty
+
+> hasOwnProperty检测对象的自有属性，不会到对象原型中查找，IN会到对象原型链依次查找
+
+```
+var Person = function(name) {
+  this.name = name;
+}
+Person.prototype = {
+  sayName: function() {
+    console.log(this.name);
+  }
+};
+// 原型
+var person = new Person('tom');
+
+console.log(person.hasOwnProperty('sayName')); // false
+console.log('sayName' in person); // true
+
+// 继承
+var Student = function(name, score) {
+  Person.call(this, name);
+  this.score = score;
+};
+Student.prototype = new Person();
+var student = new Student('name', 11);
+
+console.log(student.hasOwnProperty('sayName')); // false
+console.log('sayName' in student); // true
+```
