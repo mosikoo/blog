@@ -104,3 +104,21 @@ var student = new Student('name', 11);
 console.log(student.hasOwnProperty('sayName')); // false
 console.log('sayName' in student); // true
 ```
+
+### closure
+
+```
+function closure(num) {
+  const arr = [1, 2, 3];
+  function dosomething(i) {
+    num += i;
+    arr.push(num);
+    console.log(num, arr);
+  }
+  return dosomething;
+}
+
+var fooo = closure(2);  // 生成新的闭包环境
+fooo(4); // 6, [1, 2, 3, 6]
+fooo(5); // 11, [1, 2, 3, 6, 11]
+```

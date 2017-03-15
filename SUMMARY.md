@@ -3,13 +3,8 @@
 * [Introduction](./README.md)
 
 ### 1. js专题
-  * [1.1 尾调化优化](./js/index.md#尾调化优化)
-  * [1.2 尾递归](./js/index.md#尾递归)
-  * [1.3 柯里化](./js/index.md#函数柯里化)
-  * [1.4 函数式编程](./js/index.md#函数式编程)
-  * 闭包
-  * 原型
-  * prototype
+  * [js记录](./js/index.md#尾调化优化)
+  * prototype及原型链
   * promise
 
 ### 2. webpack
@@ -17,6 +12,10 @@
 * [2.1 loader开发]()
 * [2.2 css优化]()
 * [2.3 性能优化]()
+
+### 3.react
+
+* [react](./js/reactFromSources.md)
 
 ### 3. 插件安装
 
@@ -29,4 +28,3 @@
 ### 5. 其他
 * [5.1 环境变量使用](./others/path.md)
 * [5.2 理解jsonp](./others/jsonp.md)
-

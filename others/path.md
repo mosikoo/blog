@@ -44,4 +44,20 @@ console.log(process.env.test111);
 console.log(process.env);
 ```
 
+```
+// 是否是开发环境
+export const DEV_ENV = (             
+  !isNaN(location.hostname.replace(/\./g, '')) || location.hostname === 'localhost'
+);
 
+// xxxx表示特定的网站,是否是测试环境
+export const TEST_ENV =( 
+   location.hostname.indexOf('xxxx') > -1
+);
+
+// 是否是生产环境
+export const PRODUCTION_ENV = (
+  !DEV_ENV && !TEST_ENV
+);
+
+```
