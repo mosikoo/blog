@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>prototype及原型链 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -12,20 +12,20 @@
         
         
     
-    <link rel="stylesheet" href="gitbook/style.css">
+    <link rel="stylesheet" href="../gitbook/style.css">
 
     
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
                 
             
         
@@ -53,12 +53,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="js/" />
     
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -87,9 +87,9 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="../">
             
-                <a href="./">
+                <a href="../">
             
                     
                     Introduction
@@ -107,9 +107,9 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="js/">
+        <li class="chapter " data-level="2.1" data-path="./">
             
-                <a href="js/">
+                <a href="./">
             
                     
                     js记录
@@ -120,9 +120,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="js/proto.html">
+        <li class="chapter active" data-level="2.2" data-path="proto.html">
             
-                <a href="js/proto.html">
+                <a href="proto.html">
             
                     
                     prototype及原型链
@@ -199,9 +199,9 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="js/reactFromSources.html">
+        <li class="chapter " data-level="4.1" data-path="reactFromSources.html">
             
-                <a href="js/reactFromSources.html">
+                <a href="reactFromSources.html">
             
                     
                     react
@@ -219,9 +219,9 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="plugins/eslint.html">
+        <li class="chapter " data-level="5.1" data-path="../plugins/eslint.html">
             
-                <a href="plugins/eslint.html">
+                <a href="../plugins/eslint.html">
             
                     
                     3.1 eslint安装指南
@@ -272,9 +272,9 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="others/path.html">
+        <li class="chapter " data-level="7.1" data-path="../others/path.html">
             
-                <a href="others/path.html">
+                <a href="../others/path.html">
             
                     
                     5.1 环境变量使用
@@ -285,9 +285,9 @@
             
         </li>
     
-        <li class="chapter " data-level="7.2" data-path="others/jsonp.html">
+        <li class="chapter " data-level="7.2" data-path="../others/jsonp.html">
             
-                <a href="others/jsonp.html">
+                <a href="../others/jsonp.html">
             
                     
                     5.2 理解jsonp
@@ -328,7 +328,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href=".." >prototype及原型链</a>
     </h1>
 </div>
 
@@ -343,7 +343,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x6574;&#x7406;&#x4E2D;">&#x6574;&#x7406;&#x4E2D;....</h3>
+                                <h3 id="&#x7406;&#x89E3;js&#x5BF9;&#x8C61;&#x53CA;&#x539F;&#x578B;&#x94FE;">&#x7406;&#x89E3;Js&#x5BF9;&#x8C61;&#x53CA;&#x539F;&#x578B;&#x94FE;</h3>
+<h5 id="proto"><code>_proto_</code></h5>
+<p>  &#x6BCF;&#x4E2A;js&#x5BF9;&#x8C61;&#x90FD;&#x6709;&#x539F;&#x578B;&#x5BF9;&#x8C61;<code>_proto_</code>&#xFF0C;&#x7528;&#x6765;&#x4ECE;&#x539F;&#x578B;&#x94FE;&#x4E0A;&#x7EE7;&#x627F;&#x5C5E;&#x6027;&#x4E0E;&#x65B9;&#x6CD5;&#x3002;&#x5BF9;&#x8C61;&#x901A;&#x8FC7;<code>_proto_</code>&#x5BFB;&#x627E;&#x4E0A;&#x6E38;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x4E3A;&#x5F62;&#x6210;&#x539F;&#x578B;&#x94FE;&#xFF0C;&#x76F4;&#x5230;Object.prototype(&#x6216;&#x8005;null)&#x8FBE;&#x5230;&#x9876;&#x5C42;</p>
+<h5 id="prototype">prototype</h5>
+<p>&#x53EA;&#x6709;&#x51FD;&#x6570;&#x624D;&#x6709;prototype&#x5C5E;&#x6027;&#xFF0C; &#x5F53;&#x901A;&#x8FC7;<code>new</code>&#x5173;&#x952E;&#x5B57;&#x6765;&#x8C03;&#x7528;&#x521B;&#x9020;&#x8BE5;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x4F8B;&#x65F6;&#xFF0C;&#x8BE5;&#x5B9E;&#x4F8B;&#x4F1A;&#x81EA;&#x52A8;&#x7EE7;&#x627F;prototype&#x7684;&#x5C5E;&#x6027;&#x4E0E;&#x65B9;&#x6CD5;</p>
+<h5 id="instanceof&#x65B9;&#x6CD5;">instanceof&#x65B9;&#x6CD5;</h5>
+<p>A instanceof B: &#x5224;&#x65AD;A&#x662F;&#x5426;&#x662F;B&#x7684;&#x5B9E;&#x4F8B;&#x6216;&#x8005;&#x5224;&#x65AD;A&#x7684;&#x539F;&#x578B;&#x94FE;&#x7684;&#x4E0A;&#x5C42;&#x662F;&#x5426;&#x4E3A;B
+&#x7B49;&#x4EF7;&#x4E8E;&#xFF1A; A._proto_ === B.prototype</p>
+<h5 id="&#x5404;&#x4E2A;&#x5BF9;&#x8C61;&#x95F4;&#x539F;&#x578B;&#x793A;&#x4F8B;&#x56FE;">&#x5404;&#x4E2A;&#x5BF9;&#x8C61;&#x95F4;&#x539F;&#x578B;&#x793A;&#x4F8B;&#x56FE;</h5>
+<p><img src="../assets/proto.png" alt="proto.png"></p>
 
                                 
                                 </section>
@@ -371,10 +380,10 @@
 
             
                 
-                
-                <a href="js/" class="navigation navigation-next navigation-unique" aria-label="Next page: js记录">
-                    <i class="fa fa-angle-right"></i>
+                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: js记录">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -383,37 +392,37 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"js记录","level":"2.1","depth":1,"path":"js/index.md","ref":"./js/index.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2017-01-31T03:42:48.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-27T16:36:57.655Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"prototype及原型链","level":"2.2","depth":1,"next":{"title":"promise","level":"2.3","depth":1,"ref":"","articles":[]},"previous":{"title":"js记录","level":"2.1","depth":1,"path":"js/index.md","ref":"./js/index.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js/proto.md","mtime":"2017-03-27T16:36:48.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-27T16:36:57.655Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
 
         
-    <script src="gitbook/gitbook.js"></script>
-    <script src="gitbook/theme.js"></script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
     
         
-        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
     
         
-        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
         
     
         
-        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
         
     
         
-        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
         
     
         
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
         
     
 
