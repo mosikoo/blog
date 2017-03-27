@@ -5,6 +5,7 @@
 ### 1. js专题
   * [js记录](./js/index.md)
   * [prototype及原型链](./js/proto.md)
+>>>>>>> 714fcfcbda76028e870883b41aa54709cbf550c0
   * promise
 
 ### 2. webpack
