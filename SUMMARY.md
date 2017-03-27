@@ -3,8 +3,8 @@
 * [Introduction](./README.md)
 
 ### 1. js专题
-  * [js记录](./js/index.md#尾调化优化)
-  * prototype及原型链
+  * [js记录](./js/index.md)
+  * [prototype及原型链](./js/ptoto.md)
   * promise
 
 ### 2. webpack
