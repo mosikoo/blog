@@ -1,5 +1,5 @@
 #### 问题
-onMouseEnter(e) {} 
+onMouseEnter(e) {}
 e具体指什么，文档参考？
 
 
@@ -38,7 +38,7 @@ componentWillMount
 render  
 componentDidMount  
 /* unmount */
-componentWillUnmount 
+componentWillUnmount
 
 ```
 ##### 延时函数
@@ -82,7 +82,19 @@ function getContainer(instance) { // instance 为 this
     const mountNode = document.body;
     mountNode.appendChild(popupContainer);
     return popupContainer;
-  }
+}
+
+function renderComponent() {
+  // instance 为组件，instance_container为容器 两者区别比较
+  ReactDOM.unstable_renderSubtreeIntoContainer(instance,
+    component, instance._container,
+    function callback() {
+      instance._component = this;
+      if (ready) {
+        ready.call(this);
+      }
+    });
+}
 ```
 
 ##### 获取自身
