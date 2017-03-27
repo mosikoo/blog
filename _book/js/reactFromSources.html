@@ -109,7 +109,7 @@
     
         <li class="chapter " data-level="2.1" data-path="./">
             
-                <a href="./#尾调化优化">
+                <a href="./">
             
                     
                     js记录
@@ -120,14 +120,14 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" >
+        <li class="chapter " data-level="2.2" data-path="proto.html">
             
-                <span>
+                <a href="proto.html">
             
                     
                     prototype及原型链
             
-                </span>
+                </a>
             
 
             
@@ -344,7 +344,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h4 id="&#x95EE;&#x9898;">&#x95EE;&#x9898;</h4>
-<p>onMouseEnter(e) {} 
+<p>onMouseEnter(e) {}
 e&#x5177;&#x4F53;&#x6307;&#x4EC0;&#x4E48;&#xFF0C;&#x6587;&#x6863;&#x53C2;&#x8003;&#xFF1F;</p>
 <p>&#x591A;&#x79CD;&#x53C2;&#x6570;&#x4E0B; &#x9009;&#x62E9;&#x4E0D;&#x4F20;&#x9012;</p>
 <pre><code>renderTreeData(props) {
@@ -410,7 +410,19 @@ function getContainer(instance) { // instance &#x4E3A; this
     const mountNode = document.body;
     mountNode.appendChild(popupContainer);
     return popupContainer;
-  }
+}
+
+function renderComponent() {
+  // instance &#x4E3A;&#x7EC4;&#x4EF6;&#xFF0C;instance_container&#x4E3A;&#x5BB9;&#x5668; &#x4E24;&#x8005;&#x533A;&#x522B;&#x6BD4;&#x8F83;
+  ReactDOM.unstable_renderSubtreeIntoContainer(instance,
+    component, instance._container,
+    function callback() {
+      instance._component = this;
+      if (ready) {
+        ready.call(this);
+      }
+    });
+}
 </code></pre><h5 id="&#x83B7;&#x53D6;&#x81EA;&#x8EAB;">&#x83B7;&#x53D6;&#x81EA;&#x8EAB;</h5>
 <pre><code>ReactDOM.findDOMNode(this)
 </code></pre>
@@ -452,7 +464,7 @@ function getContainer(instance) { // instance &#x4E3A; this
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"react","level":"4.1","depth":1,"next":{"title":"3.1 eslint安装指南","level":"5.1","depth":1,"path":"plugins/eslint.md","ref":"./plugins/eslint.md","articles":[]},"previous":{"title":"2.3 性能优化","level":"3.3","depth":1,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js/reactFromSources.md","mtime":"2017-02-21T00:53:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-15T13:40:52.094Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"react","level":"4.1","depth":1,"next":{"title":"3.1 eslint安装指南","level":"5.1","depth":1,"path":"plugins/eslint.md","ref":"./plugins/eslint.md","articles":[]},"previous":{"title":"2.3 性能优化","level":"3.3","depth":1,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js/reactFromSources.md","mtime":"2017-03-20T07:10:48.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-27T16:33:43.970Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -460,10 +472,6 @@ function getContainer(instance) { // instance &#x4E3A; this
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>

@@ -9,3 +9,7 @@
 ##### instanceof方法
 A instanceof B: 判断A是否是B的实例或者判断A的原型链的上层是否为B
 等价于： A.\_proto\_ === B.prototype
+
+##### 各个对象间原型示例图
+
+![proto.png](../assets/proto.png)

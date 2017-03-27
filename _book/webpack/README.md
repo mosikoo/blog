@@ -1,3 +1,5 @@
+### 全局作用域下的配置
+
 ```
   config.externals = {
     '@ali/cg-react': 'var CGReact',
@@ -5,6 +7,8 @@
     'react-dom': 'var ReactDOM'
   };
 ```
+
+### 设置别名
 
 ```
     config.resolve.alias = {
@@ -16,5 +20,22 @@
       // debug模式
       config.devtool = 'eval-source-map';
     }
+```
 
+### 热替换
+
+```
+npm i webpack express webpack-dev-middleware webpack-hot-middleware -D
+```
+
+webpack.config.js配置项中
+```
+entry: [
+  'webpack/hot/dev-server',
+  'webpack-hot-middleware/client',
+  'client/index.js'
+],
+plugins: [
+  new webpack.HotModuleReplacementPlugin()
+]
 ```

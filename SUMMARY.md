@@ -4,7 +4,7 @@
 
 ### 1. js专题
   * [js记录](./js/index.md)
-  * [prototype及原型链](./js/ptoto.md)
+  * [prototype及原型链](./js/proto.md)
   * promise
 
 ### 2. webpack
