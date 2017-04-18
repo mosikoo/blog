@@ -67,6 +67,8 @@ function buffer(fn, ms) {
 
 ##### 创建与移除组件
 
+> 除非是顶层创建或移除组件，否则没必要用到下面这些函数
+
 ```
 function removeContainer(instance) {
   if (instance._container) { // instance._container 是要移除的dom元素

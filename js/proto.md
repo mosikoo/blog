@@ -13,3 +13,15 @@ A instanceof B: 判断A是否是B的实例或者判断A的原型链的上层是�
 ##### 各个对象间原型示例图
 
 ![proto.png](../assets/proto.png)
+
+
+##### constructor是什么？？
+
+##### new 一个对象的必要性
+
+假设写一个Dialog，如果单纯用function是无法完成的，创造类后有this可以互相调用
+new 一个Dialog实例（如`var dialog = new Dialog(opt)`）,
+吊销dialog就需要直接调用dialog.destroy，是吊销这个dialog而不是另外一个实例，只因为this的存在.
+
+其他的作用？？
+写一个简单的dialog 放到这里中介绍
