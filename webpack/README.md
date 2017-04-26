@@ -1,5 +1,7 @@
 ### 全局作用域下的配置
 
+> script中引入， 配置全局别名，能够有效地减少打包体积
+
 ```
   config.externals = {
     '@ali/cg-react': 'var CGReact',
@@ -9,6 +11,8 @@
 ```
 
 ### 设置别名
+
+> 设置别名，
 
 ```
     config.resolve.alias = {
@@ -39,3 +43,8 @@ plugins: [
   new webpack.HotModuleReplacementPlugin()
 ]
 ```
+
+
+### loader整理
+
+### plugins整理
