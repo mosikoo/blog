@@ -49,7 +49,7 @@ import Button from 'uxcore-button'
 打包时间在可接收范围之内，但是开发时每次修改一点点内容热更新都需要15s时间还是忍无可忍。
 最后发现是nowa-server中`webpack.SourceMapDevToolPlugin`插件原因，因为调试需要sourcemap，导致bundle体积过大，热更新速度减慢。
 
-所以顺带提了pr使是否调试为可选项，如果开发过程中不需要调试的时候执行
+所以顺带提了pr,使是否调试为可选项，如果开发过程中不需要调试的时候执行
 
 ```
 nowa-server --no-sourcemap
