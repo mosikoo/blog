@@ -45,9 +45,57 @@ Parent.childContextTypes = {
 
 #### history
 ##### createHashHistory
+
+返回一个history对象
 ```
-invariant(
-  canUseDOM,
-  'Hash history needs a DOM'
-) // 需要一个有DOM的环境，指浏览器环境
+const history = {
+  length: globalHistory.length,
+  action: 'POP',
+  location: initialLocation,
+  createHref,
+  push,
+  replace,
+  go,
+  goBack,
+  goForward,
+  block,
+  listen
+}
 ```
+
+createHref @params {object} location
+
+```
+const createHref = (location) =>
+  '#' + encodePath(basename + createPath(location))
+```
+
+push @params {string} path
+
+> 1、 获取当前location
+
+> 2、 如果hash改变，则改变url的hash值、修改allPaths[]的值，改变history中的action及location
+
+replace @params {string} path
+
+> 过程与`push`类似，只是使用到`location.replace()`替换当前的hash，消除当前的历史
+
+go goBack goForward
+
+> 与`history.go()`类似
+
+listen
+
+> 增加监听函数，且这些监听函数会在`setState`中一一触发
+
+> 再次执行其结果值则可取消监听
+
+block
+
+> 可以设置`prompt`提示函数， 与`listen`过程类似
+
+> 只要绑定了`block`或者`listen`，则会监听`hashchange`事件,否则取消绑定
+
+##### createBrowserHistory
+
+主要利用h5的API: pushState, replaceState, popstate事件
