@@ -6,6 +6,8 @@
 
 运用`Context`属性直接在react组件中传递props属性,在大多数应用中，我们基本用不到这个属性，且这个属性并不是很稳定，官方推荐类似redux等库来管理state而不是用`Context`（其实redux也是用Context使props贯穿整个应用- -）。
 
+> Context 就近取值，从父级开始往上取，类似从原型链中取值
+
 基本使用方法
 ```
 // childComponent

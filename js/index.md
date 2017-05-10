@@ -8,7 +8,7 @@
 
 具体形式如下所示
 
-``` javascript 
+``` javascript
 function f() {
 	return g(x);
 }
@@ -121,4 +121,9 @@ function closure(num) {
 var fooo = closure(2);  // 生成新的闭包环境
 fooo(4); // 6, [1, 2, 3, 6]
 fooo(5); // 11, [1, 2, 3, 6, 11]
+```
+
+### 深度拷贝原始数据
+```
+var dataSource = JSON.parse(JSON.stringify(source))
 ```
