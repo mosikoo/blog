@@ -78,7 +78,7 @@ var bind = function(context ,fn) {
 
 > hasOwnProperty检测对象的自有属性，不会到对象原型中查找，IN会到对象原型链依次查找
 
-```
+```javascript
 var Person = function(name) {
   this.name = name;
 }
@@ -107,7 +107,7 @@ console.log('sayName' in student); // true
 
 ### closure
 
-```
+```javascript
 function closure(num) {
   const arr = [1, 2, 3];
   function dosomething(i) {
@@ -128,6 +128,38 @@ fooo(5); // 11, [1, 2, 3, 6, 11]
 var dataSource = JSON.parse(JSON.stringify(source))
 ```
 
+
+### 设置属性Object.defineProperty
+用`Object.defineProperty`设置obj的属性可以不用顾虑`setter`
+```javascript
+var obj = {
+    a: 10,
+    get name () {
+        return `name: ${this._name_}`;
+    },
+    set name (x) {
+        this._name_ = `name: ${x}`;
+    }
+};
+// 两种方式都可以
+// Object.defineProperty(obj, 'name', {
+//     get() {
+//         return this._name_;
+//     },
+//     set: function(x) {
+//         this._name_ =  `name: ${x}`;
+//     }
+// });
+obj.name = 'xxx';
+
+console.log(obj.name);
+
+Object.defineProperty(obj, 'name', {
+    value: 'tom'
+});
+console.log(obj.name);
+```
+
 ### 理解Js对象及原型链
 
 #####  `_proto_`
@@ -146,6 +178,18 @@ A instanceof B: 判断A是否是B的实例或者判断A的原型链的上层是�
 
 
 ##### constructor是什么？？
+
+##### demo
+
+```javascript
+class A {}
+class B {}
+var a = new A();
+var b = new B();
+b.__proto__ === B.prototype // true
+a.__proto__ === A.prototype // true
+B.prototype.__proto__ === A.prototype // true 继承的原型链
+```
 
 ##### new 一个对象的必要性
 
