@@ -298,6 +298,19 @@
             
         </li>
     
+        <li class="chapter " data-level="7.3" >
+            
+                <span>
+            
+                    
+                    5.3 正则表达式
+            
+                </span>
+            
+
+            
+        </li>
+    
 
     
 
@@ -353,6 +366,13 @@
 &#x7B49;&#x4EF7;&#x4E8E;&#xFF1A; A._proto_ === B.prototype</p>
 <h5 id="&#x5404;&#x4E2A;&#x5BF9;&#x8C61;&#x95F4;&#x539F;&#x578B;&#x793A;&#x4F8B;&#x56FE;">&#x5404;&#x4E2A;&#x5BF9;&#x8C61;&#x95F4;&#x539F;&#x578B;&#x793A;&#x4F8B;&#x56FE;</h5>
 <p><img src="../assets/proto.png" alt="proto.png"></p>
+<h5 id="constructor&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#xFF1F;">constructor&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#xFF1F;</h5>
+<h5 id="new-&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5FC5;&#x8981;&#x6027;">new &#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5FC5;&#x8981;&#x6027;</h5>
+<p>&#x5047;&#x8BBE;&#x5199;&#x4E00;&#x4E2A;Dialog&#xFF0C;&#x5982;&#x679C;&#x5355;&#x7EAF;&#x7528;function&#x662F;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x7684;&#xFF0C;&#x521B;&#x9020;&#x7C7B;&#x540E;&#x6709;this&#x53EF;&#x4EE5;&#x4E92;&#x76F8;&#x8C03;&#x7528;
+new &#x4E00;&#x4E2A;Dialog&#x5B9E;&#x4F8B;&#xFF08;&#x5982;<code>var dialog = new Dialog(opt)</code>&#xFF09;,
+&#x540A;&#x9500;dialog&#x5C31;&#x9700;&#x8981;&#x76F4;&#x63A5;&#x8C03;&#x7528;dialog.destroy&#xFF0C;&#x662F;&#x540A;&#x9500;&#x8FD9;&#x4E2A;dialog&#x800C;&#x4E0D;&#x662F;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF0C;&#x53EA;&#x56E0;&#x4E3A;this&#x7684;&#x5B58;&#x5728;.</p>
+<p>&#x5176;&#x4ED6;&#x7684;&#x4F5C;&#x7528;&#xFF1F;&#xFF1F;
+&#x5199;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;dialog &#x653E;&#x5230;&#x8FD9;&#x91CC;&#x4E2D;&#x4ECB;&#x7ECD;</p>
 
                                 
                                 </section>
@@ -392,7 +412,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"prototype及原型链","level":"2.2","depth":1,"next":{"title":"promise","level":"2.3","depth":1,"ref":"","articles":[]},"previous":{"title":"js记录","level":"2.1","depth":1,"path":"js/index.md","ref":"./js/index.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js/proto.md","mtime":"2017-03-27T16:36:48.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-27T16:36:57.655Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"prototype及原型链","level":"2.2","depth":1,"next":{"title":"promise","level":"2.3","depth":1,"ref":"","articles":[]},"previous":{"title":"js记录","level":"2.1","depth":1,"path":"js/index.md","ref":"./js/index.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js/proto.md","mtime":"2017-03-29T16:31:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-26T01:50:22.425Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
