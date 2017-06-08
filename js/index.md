@@ -183,7 +183,7 @@ A instanceof B: 判断A是否是B的实例或者判断A的原型链的上层是�
 
 ```javascript
 class A {}
-class B {}
+class B extends A {}
 var a = new A();
 var b = new B();
 b.__proto__ === B.prototype // true
