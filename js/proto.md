@@ -15,7 +15,21 @@ A instanceof B: 判断A是否是B的实例或者判断A的原型链的上层是�
 ![proto.png](../assets/proto.png)
 
 
-##### constructor是什么？？
+##### constructor指自身(基本是摆设?)
+
+##### 相关Object方法
+* 设置subClass的原型对象为superClass：`Object.setPrototypeOf(subClass, superClass)`。类似于`subClass.__proto__ = superClass`，但是要注意兼容性
+
+* 获取Demo原型对象：`Object.getPrototypeOf(Demo))`。类似于`Demo.__proto__`
+
+* 使用指定的原型对象和其属性创建了一个新的对象：Object.create
+
+```javascript
+// 关于继承的例子：设置subClass的原型及Constructor
+subClass.prototype = Object.create(superClass && superClass.prototype,
+    { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }
+  );
+```
 
 ##### new 一个对象的必要性
 
