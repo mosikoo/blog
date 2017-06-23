@@ -148,3 +148,14 @@ createClass.js文件
 * 定义构造方法Constructor，构造方法中进行props，refs等的初始化，并调用getInitialState来初始化state
 * 调用getDefaultProps，并放在defaultProps类变量上。这个变量不属于某个单独的对象。可理解为static 变量
 * 将React中暴露给应用，但应用中没有设置的方法，设置为null。
+
+ReactUpdates.js文件
+```js
+var ReactUpdates = {
+  ReactReconcileTransaction: null,
+  batchedUpdates: batchedUpdates, // 执行分批策略函数
+  enqueueUpdate: enqueueUpdate,
+  flushBatchedUpdates: flushBatchedUpdates,
+  injection: ReactUpdatesInjection, // 注射函数
+};
+```
