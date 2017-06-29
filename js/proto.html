@@ -146,6 +146,19 @@
             
         </li>
     
+        <li class="chapter " data-level="2.4" data-path="inherit.html">
+            
+                <a href="inherit.html">
+            
+                    
+                    inherit
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
         
@@ -199,12 +212,25 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="reactFromSources.html">
+        <li class="chapter " data-level="4.1" data-path="../react/reactFromSources.html">
             
-                <a href="reactFromSources.html">
+                <a href="../react/reactFromSources.html">
             
                     
-                    react
+                    分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../react/pooledClass.html">
+            
+                <a href="../react/pooledClass.html">
+            
+                    
+                    pooledClass
             
                 </a>
             
@@ -298,14 +324,40 @@
             
         </li>
     
-        <li class="chapter " data-level="7.3" >
+        <li class="chapter " data-level="7.3" data-path="../others/regExp.html">
             
-                <span>
+                <a href="../others/regExp.html">
             
                     
                     5.3 正则表达式
             
-                </span>
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="../others/format.html">
+            
+                <a href="../others/format.html">
+            
+                    
+                    5.4 注释格式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="../others/n.html">
+            
+                <a href="../others/n.html">
+            
+                    
+                    5.5 n源码
+            
+                </a>
             
 
             
@@ -366,7 +418,21 @@
 &#x7B49;&#x4EF7;&#x4E8E;&#xFF1A; A._proto_ === B.prototype</p>
 <h5 id="&#x5404;&#x4E2A;&#x5BF9;&#x8C61;&#x95F4;&#x539F;&#x578B;&#x793A;&#x4F8B;&#x56FE;">&#x5404;&#x4E2A;&#x5BF9;&#x8C61;&#x95F4;&#x539F;&#x578B;&#x793A;&#x4F8B;&#x56FE;</h5>
 <p><img src="../assets/proto.png" alt="proto.png"></p>
-<h5 id="constructor&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#xFF1F;">constructor&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#xFF1F;</h5>
+<h5 id="constructor&#x6307;&#x81EA;&#x8EAB;&#x57FA;&#x672C;&#x662F;&#x6446;&#x8BBE;">constructor&#x6307;&#x81EA;&#x8EAB;(&#x57FA;&#x672C;&#x662F;&#x6446;&#x8BBE;?)</h5>
+<h5 id="&#x76F8;&#x5173;object&#x65B9;&#x6CD5;">&#x76F8;&#x5173;Object&#x65B9;&#x6CD5;</h5>
+<ul>
+<li><p>&#x8BBE;&#x7F6E;subClass&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E3A;superClass&#xFF1A;<code>Object.setPrototypeOf(subClass, superClass)</code>&#x3002;&#x7C7B;&#x4F3C;&#x4E8E;<code>subClass.__proto__ = superClass</code>&#xFF0C;&#x4F46;&#x662F;&#x8981;&#x6CE8;&#x610F;&#x517C;&#x5BB9;&#x6027;</p>
+</li>
+<li><p>&#x83B7;&#x53D6;Demo&#x539F;&#x578B;&#x5BF9;&#x8C61;&#xFF1A;<code>Object.getPrototypeOf(Demo))</code>&#x3002;&#x7C7B;&#x4F3C;&#x4E8E;<code>Demo.__proto__</code></p>
+</li>
+<li><p>&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x548C;&#x5176;&#x5C5E;&#x6027;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5BF9;&#x8C61;&#xFF1A;Object.create</p>
+</li>
+</ul>
+<pre><code class="lang-javascript"><span class="hljs-comment">// &#x5173;&#x4E8E;&#x7EE7;&#x627F;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;&#x8BBE;&#x7F6E;subClass&#x7684;&#x539F;&#x578B;&#x53CA;Constructor</span>
+subClass.prototype = <span class="hljs-built_in">Object</span>.create(superClass &amp;&amp; superClass.prototype,
+    { <span class="hljs-keyword">constructor</span>: { value: subClass, enumerable: <span class="hljs-literal">false</span>, writable: <span class="hljs-literal">true</span>, configurable: <span class="hljs-literal">true</span> } }
+  );
+</code></pre>
 <h5 id="new-&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5FC5;&#x8981;&#x6027;">new &#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5FC5;&#x8981;&#x6027;</h5>
 <p>&#x5047;&#x8BBE;&#x5199;&#x4E00;&#x4E2A;Dialog&#xFF0C;&#x5982;&#x679C;&#x5355;&#x7EAF;&#x7528;function&#x662F;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x7684;&#xFF0C;&#x521B;&#x9020;&#x7C7B;&#x540E;&#x6709;this&#x53EF;&#x4EE5;&#x4E92;&#x76F8;&#x8C03;&#x7528;
 new &#x4E00;&#x4E2A;Dialog&#x5B9E;&#x4F8B;&#xFF08;&#x5982;<code>var dialog = new Dialog(opt)</code>&#xFF09;,
@@ -412,7 +478,7 @@ new &#x4E00;&#x4E2A;Dialog&#x5B9E;&#x4F8B;&#xFF08;&#x5982;<code>var dialog = new
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"prototype及原型链","level":"2.2","depth":1,"next":{"title":"promise","level":"2.3","depth":1,"ref":"","articles":[]},"previous":{"title":"js记录","level":"2.1","depth":1,"path":"js/index.md","ref":"./js/index.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js/proto.md","mtime":"2017-03-29T16:31:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-26T01:50:22.425Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"prototype及原型链","level":"2.2","depth":1,"next":{"title":"promise","level":"2.3","depth":1,"ref":"","articles":[]},"previous":{"title":"js记录","level":"2.1","depth":1,"path":"js/index.md","ref":"./js/index.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js/proto.md","mtime":"2017-06-09T09:34:08.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-29T14:15:50.418Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

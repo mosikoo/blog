@@ -148,6 +148,19 @@
             
         </li>
     
+        <li class="chapter " data-level="2.4" data-path="inherit.html">
+            
+                <a href="inherit.html">
+            
+                    
+                    inherit
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
         
@@ -201,12 +214,25 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="reactFromSources.html">
+        <li class="chapter " data-level="4.1" data-path="../react/reactFromSources.html">
             
-                <a href="reactFromSources.html">
+                <a href="../react/reactFromSources.html">
             
                     
-                    react
+                    分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../react/pooledClass.html">
+            
+                <a href="../react/pooledClass.html">
+            
+                    
+                    pooledClass
             
                 </a>
             
@@ -300,14 +326,40 @@
             
         </li>
     
-        <li class="chapter " data-level="7.3" >
+        <li class="chapter " data-level="7.3" data-path="../others/regExp.html">
             
-                <span>
+                <a href="../others/regExp.html">
             
                     
                     5.3 正则表达式
             
-                </span>
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="../others/format.html">
+            
+                <a href="../others/format.html">
+            
+                    
+                    5.4 注释格式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="../others/n.html">
+            
+                <a href="../others/n.html">
+            
+                    
+                    5.5 n源码
+            
+                </a>
             
 
             
@@ -422,47 +474,78 @@ bar(<span class="hljs-number">2</span>);
 <blockquote>
 <p>hasOwnProperty&#x68C0;&#x6D4B;&#x5BF9;&#x8C61;&#x7684;&#x81EA;&#x6709;&#x5C5E;&#x6027;&#xFF0C;&#x4E0D;&#x4F1A;&#x5230;&#x5BF9;&#x8C61;&#x539F;&#x578B;&#x4E2D;&#x67E5;&#x627E;&#xFF0C;IN&#x4F1A;&#x5230;&#x5BF9;&#x8C61;&#x539F;&#x578B;&#x94FE;&#x4F9D;&#x6B21;&#x67E5;&#x627E;</p>
 </blockquote>
-<pre><code>var Person = function(name) {
-  this.name = name;
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> Person = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>) </span>{
+  <span class="hljs-keyword">this</span>.name = name;
 }
 Person.prototype = {
-  sayName: function() {
-    console.log(this.name);
+  sayName: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name);
   }
 };
-// &#x539F;&#x578B;
-var person = new Person(&apos;tom&apos;);
+<span class="hljs-comment">// &#x539F;&#x578B;</span>
+<span class="hljs-keyword">var</span> person = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&apos;tom&apos;</span>);
 
-console.log(person.hasOwnProperty(&apos;sayName&apos;)); // false
-console.log(&apos;sayName&apos; in person); // true
+<span class="hljs-built_in">console</span>.log(person.hasOwnProperty(<span class="hljs-string">&apos;sayName&apos;</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;sayName&apos;</span> <span class="hljs-keyword">in</span> person); <span class="hljs-comment">// true</span>
 
-// &#x7EE7;&#x627F;
-var Student = function(name, score) {
-  Person.call(this, name);
-  this.score = score;
+<span class="hljs-comment">// &#x7EE7;&#x627F;</span>
+<span class="hljs-keyword">var</span> Student = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name, score</span>) </span>{
+  Person.call(<span class="hljs-keyword">this</span>, name);
+  <span class="hljs-keyword">this</span>.score = score;
 };
-Student.prototype = new Person();
-var student = new Student(&apos;name&apos;, 11);
+Student.prototype = <span class="hljs-keyword">new</span> Person();
+<span class="hljs-keyword">var</span> student = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&apos;name&apos;</span>, <span class="hljs-number">11</span>);
 
-console.log(student.hasOwnProperty(&apos;sayName&apos;)); // false
-console.log(&apos;sayName&apos; in student); // true
-</code></pre><h3 id="closure">closure</h3>
-<pre><code>function closure(num) {
-  const arr = [1, 2, 3];
-  function dosomething(i) {
+<span class="hljs-built_in">console</span>.log(student.hasOwnProperty(<span class="hljs-string">&apos;sayName&apos;</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;sayName&apos;</span> <span class="hljs-keyword">in</span> student); <span class="hljs-comment">// true</span>
+</code></pre>
+<h3 id="closure">closure</h3>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">closure</span>(<span class="hljs-params">num</span>) </span>{
+  <span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dosomething</span>(<span class="hljs-params">i</span>) </span>{
     num += i;
     arr.push(num);
-    console.log(num, arr);
+    <span class="hljs-built_in">console</span>.log(num, arr);
   }
-  return dosomething;
+  <span class="hljs-keyword">return</span> dosomething;
 }
 
-var fooo = closure(2);  // &#x751F;&#x6210;&#x65B0;&#x7684;&#x95ED;&#x5305;&#x73AF;&#x5883;
-fooo(4); // 6, [1, 2, 3, 6]
-fooo(5); // 11, [1, 2, 3, 6, 11]
-</code></pre><h3 id="&#x6DF1;&#x5EA6;&#x62F7;&#x8D1D;&#x539F;&#x59CB;&#x6570;&#x636E;">&#x6DF1;&#x5EA6;&#x62F7;&#x8D1D;&#x539F;&#x59CB;&#x6570;&#x636E;</h3>
+<span class="hljs-keyword">var</span> fooo = closure(<span class="hljs-number">2</span>);  <span class="hljs-comment">// &#x751F;&#x6210;&#x65B0;&#x7684;&#x95ED;&#x5305;&#x73AF;&#x5883;</span>
+fooo(<span class="hljs-number">4</span>); <span class="hljs-comment">// 6, [1, 2, 3, 6]</span>
+fooo(<span class="hljs-number">5</span>); <span class="hljs-comment">// 11, [1, 2, 3, 6, 11]</span>
+</code></pre>
+<h3 id="&#x6DF1;&#x5EA6;&#x62F7;&#x8D1D;&#x539F;&#x59CB;&#x6570;&#x636E;">&#x6DF1;&#x5EA6;&#x62F7;&#x8D1D;&#x539F;&#x59CB;&#x6570;&#x636E;</h3>
 <pre><code>var dataSource = JSON.parse(JSON.stringify(source))
-</code></pre><h3 id="&#x7406;&#x89E3;js&#x5BF9;&#x8C61;&#x53CA;&#x539F;&#x578B;&#x94FE;">&#x7406;&#x89E3;Js&#x5BF9;&#x8C61;&#x53CA;&#x539F;&#x578B;&#x94FE;</h3>
+</code></pre><h3 id="&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;objectdefineproperty">&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;Object.defineProperty</h3>
+<p>&#x7528;<code>Object.defineProperty</code>&#x8BBE;&#x7F6E;obj&#x7684;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x987E;&#x8651;<code>setter</code></p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> obj = {
+    a: <span class="hljs-number">10</span>,
+    get name () {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">`name: <span class="hljs-subst">${this._name_}</span>`</span>;
+    },
+    set name (x) {
+        <span class="hljs-keyword">this</span>._name_ = <span class="hljs-string">`name: <span class="hljs-subst">${x}</span>`</span>;
+    }
+};
+<span class="hljs-comment">// &#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x90FD;&#x53EF;&#x4EE5;</span>
+<span class="hljs-comment">// Object.defineProperty(obj, &apos;name&apos;, {</span>
+<span class="hljs-comment">//     get() {</span>
+<span class="hljs-comment">//         return this._name_;</span>
+<span class="hljs-comment">//     },</span>
+<span class="hljs-comment">//     set: function(x) {</span>
+<span class="hljs-comment">//         this._name_ =  `name: ${x}`;</span>
+<span class="hljs-comment">//     }</span>
+<span class="hljs-comment">// });</span>
+obj.name = <span class="hljs-string">&apos;xxx&apos;</span>;
+
+<span class="hljs-built_in">console</span>.log(obj.name);
+
+<span class="hljs-built_in">Object</span>.defineProperty(obj, <span class="hljs-string">&apos;name&apos;</span>, {
+    value: <span class="hljs-string">&apos;tom&apos;</span>
+});
+<span class="hljs-built_in">console</span>.log(obj.name);
+</code></pre>
+<h3 id="&#x7406;&#x89E3;js&#x5BF9;&#x8C61;&#x53CA;&#x539F;&#x578B;&#x94FE;">&#x7406;&#x89E3;Js&#x5BF9;&#x8C61;&#x53CA;&#x539F;&#x578B;&#x94FE;</h3>
 <h5 id="proto"><code>_proto_</code></h5>
 <p>  &#x6BCF;&#x4E2A;js&#x5BF9;&#x8C61;&#x90FD;&#x6709;&#x539F;&#x578B;&#x5BF9;&#x8C61;<code>_proto_</code>&#xFF0C;&#x7528;&#x6765;&#x4ECE;&#x539F;&#x578B;&#x94FE;&#x4E0A;&#x7EE7;&#x627F;&#x5C5E;&#x6027;&#x4E0E;&#x65B9;&#x6CD5;&#x3002;&#x5BF9;&#x8C61;&#x901A;&#x8FC7;<code>_proto_</code>&#x5BFB;&#x627E;&#x4E0A;&#x6E38;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x4E3A;&#x5F62;&#x6210;&#x539F;&#x578B;&#x94FE;&#xFF0C;&#x76F4;&#x5230;Object.prototype(&#x6216;&#x8005;null)&#x8FBE;&#x5230;&#x9876;&#x5C42;</p>
 <h5 id="prototype">prototype</h5>
@@ -473,6 +556,15 @@ fooo(5); // 11, [1, 2, 3, 6, 11]
 <h5 id="&#x5404;&#x4E2A;&#x5BF9;&#x8C61;&#x95F4;&#x539F;&#x578B;&#x793A;&#x4F8B;&#x56FE;">&#x5404;&#x4E2A;&#x5BF9;&#x8C61;&#x95F4;&#x539F;&#x578B;&#x793A;&#x4F8B;&#x56FE;</h5>
 <p><img src="../assets/proto.png" alt="proto.png"></p>
 <h5 id="constructor&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#xFF1F;">constructor&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#xFF1F;</h5>
+<h5 id="demo">demo</h5>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>{}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> </span>{}
+<span class="hljs-keyword">var</span> a = <span class="hljs-keyword">new</span> A();
+<span class="hljs-keyword">var</span> b = <span class="hljs-keyword">new</span> B();
+b.__proto__ === B.prototype <span class="hljs-comment">// true</span>
+a.__proto__ === A.prototype <span class="hljs-comment">// true</span>
+B.prototype.__proto__ === A.prototype <span class="hljs-comment">// true &#x7EE7;&#x627F;&#x7684;&#x539F;&#x578B;&#x94FE;</span>
+</code></pre>
 <h5 id="new-&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5FC5;&#x8981;&#x6027;">new &#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5FC5;&#x8981;&#x6027;</h5>
 <p>&#x5047;&#x8BBE;&#x5199;&#x4E00;&#x4E2A;Dialog&#xFF0C;&#x5982;&#x679C;&#x5355;&#x7EAF;&#x7528;function&#x662F;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x7684;&#xFF0C;&#x521B;&#x9020;&#x7C7B;&#x540E;&#x6709;this&#x53EF;&#x4EE5;&#x4E92;&#x76F8;&#x8C03;&#x7528;
 new &#x4E00;&#x4E2A;Dialog&#x5B9E;&#x4F8B;&#xFF08;&#x5982;<code>var dialog = new Dialog(opt)</code>&#xFF09;,
@@ -522,7 +614,7 @@ new &#x4E00;&#x4E2A;Dialog&#x5B9E;&#x4F8B;&#xFF08;&#x5982;<code>var dialog = new
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"js记录","level":"2.1","depth":1,"next":{"title":"prototype及原型链","level":"2.2","depth":1,"path":"js/proto.md","ref":"./js/proto.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"./README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js/index.md","mtime":"2017-05-26T01:49:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-26T01:50:22.425Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"js记录","level":"2.1","depth":1,"next":{"title":"prototype及原型链","level":"2.2","depth":1,"path":"js/proto.md","ref":"./js/proto.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"./README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js/index.md","mtime":"2017-05-31T01:44:59.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-29T14:15:50.418Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

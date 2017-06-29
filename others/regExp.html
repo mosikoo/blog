@@ -1,0 +1,556 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>5.3 正则表达式 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="format.html" />
+    
+    
+    <link rel="prev" href="jsonp.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">1. js专题</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../js/">
+            
+                <a href="../js/">
+            
+                    
+                    js记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../js/proto.html">
+            
+                <a href="../js/proto.html">
+            
+                    
+                    prototype及原型链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <span>
+            
+                    
+                    promise
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../js/inherit.html">
+            
+                <a href="../js/inherit.html">
+            
+                    
+                    inherit
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">2. webpack</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    2.1 loader开发
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    2.2 css优化
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+                <span>
+            
+                    
+                    2.3 性能优化
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">3.react</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../react/reactFromSources.html">
+            
+                <a href="../react/reactFromSources.html">
+            
+                    
+                    分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../react/pooledClass.html">
+            
+                <a href="../react/pooledClass.html">
+            
+                    
+                    pooledClass
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">3. 插件安装</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../plugins/eslint.html">
+            
+                <a href="../plugins/eslint.html">
+            
+                    
+                    3.1 eslint安装指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    3.2 nvm简介
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">4. git</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    4.1 git hook总结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">5. 其他</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="path.html">
+            
+                <a href="path.html">
+            
+                    
+                    5.1 环境变量使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="jsonp.html">
+            
+                <a href="jsonp.html">
+            
+                    
+                    5.2 理解jsonp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="7.3" data-path="regExp.html">
+            
+                <a href="regExp.html">
+            
+                    
+                    5.3 正则表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="format.html">
+            
+                <a href="format.html">
+            
+                    
+                    5.4 注释格式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="n.html">
+            
+                <a href="n.html">
+            
+                    
+                    5.5 n源码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >5.3 正则表达式</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;">&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;</h2>
+<h4 id="&#x975E;&#x8D2A;&#x5A6A;&#x6A21;&#x5F0F;">&#x975E;&#x8D2A;&#x5A6A;&#x6A21;&#x5F0F;</h4>
+<pre><code>var str = &quot;aaab&quot;,
+    reg1 = /a+/, //&#x8D2A;&#x5A6A;&#x6A21;&#x5F0F;
+    reg2 = /a+?/;//&#x975E;&#x8D2A;&#x5A6A;&#x6A21;&#x5F0F;
+console.log(str.match(reg1)); //[&quot;aaa&quot;], &#x7531;&#x4E8E;&#x662F;&#x8D2A;&#x5A6A;&#x6A21;&#x5F0F;, &#x6355;&#x83B7;&#x4E86;&#x6240;&#x6709;&#x7684;a
+console.log(str.match(reg2)); //[&quot;a&quot;], &#x7531;&#x4E8E;&#x662F;&#x975E;&#x8D2A;&#x5A6A;&#x6A21;&#x5F0F;, &#x53EA;&#x6355;&#x83B7;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;a
+</code></pre><h4 id="&#x5206;&#x7EC4;">&#x5206;&#x7EC4;</h4>
+<p>&#x901A;&#x8FC7;&#x5C0F;&#x62EC;&#x53F7;&#x6765;&#x5B9E;&#x73B0;</p>
+<pre><code>/(abc)+/.test(&quot;abc123&quot;) == true
+</code></pre><h4 id="&#x6355;&#x83B7;&#x6027;&#x5206;&#x7EC4;">&#x6355;&#x83B7;&#x6027;&#x5206;&#x7EC4;</h4>
+<p>js&#x4E2D;&#x4E3B;&#x8981;&#x662F;&#x901A;&#x8FC7; $+&#x7F16;&#x53F7; &#x6216;&#x8005; +&#x7F16;&#x53F7; &#x8868;&#x793A;&#x6CD5;&#x8FDB;&#x884C;&#x5F15;&#x7528;</p>
+<pre><code>var url = &quot;www.google.google.com&quot;;
+var re = /([a-z]+)\.\1/;
+console.log(url.replace(re,&quot;$1&quot;));//&quot;www.google.com&quot;
+</code></pre><h4 id="&#x975E;&#x6355;&#x83B7;&#x6027;&#x5206;&#x7EC4;">&#x975E;&#x6355;&#x83B7;&#x6027;&#x5206;&#x7EC4;</h4>
+<p>(?:\d+) &#x8868;&#x793A;&#x4E00;&#x4E2A;&#x975E;&#x6355;&#x83B7;&#x6027;&#x5206;&#x7EC4;
+&#x7531;&#x4E8E;&#x5206;&#x7EC4;&#x4E0D;&#x6355;&#x83B7;&#x4EFB;&#x4F55;&#x5185;&#x5BB9;, &#x6240;&#x4EE5;, RegExp.$1 &#x5C31;&#x6307;&#x5411;&#x4E86;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;.</p>
+<h4 id="&#x547D;&#x540D;&#x5206;&#x7EC4;">&#x547D;&#x540D;&#x5206;&#x7EC4;</h4>
+<p>&#x8BED;&#x6CD5;: (? &#x2026;)</p>
+<h3 id="&#x96F6;&#x5BBD;&#x65AD;&#x8A00;">&#x96F6;&#x5BBD;&#x65AD;&#x8A00;</h3>
+<table>
+<thead>
+<tr>
+<th>&#x5B57;&#x7B26;</th>
+<th>&#x63CF;&#x8FF0;</th>
+<th>&#x793A;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(?:pattern)</td>
+<td>&#x975E;&#x6355;&#x83B7;&#x6027;&#x5206;&#x7EC4;, &#x5339;&#x914D;pattern&#x7684;&#x4F4D;&#x7F6E;, &#x4F46;&#x4E0D;&#x6355;&#x83B7;&#x5339;&#x914D;&#x7ED3;&#x679C;.&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x4E0D;&#x521B;&#x5EFA;&#x53CD;&#x5411;&#x5F15;&#x7528;, &#x5C31;&#x597D;&#x50CF;&#x6CA1;&#x6709;&#x62EC;&#x53F7;&#x4E00;&#x6837;.</td>
+<td>&#x2018;abcd(?:e)&#x5339;&#x914D;&#x2019;abcde</td>
+</tr>
+<tr>
+<td>(?=pattern)</td>
+<td>&#x987A;&#x5E8F;&#x80AF;&#x5B9A;&#x73AF;&#x89C6;, &#x5339;&#x914D;&#x540E;&#x9762;&#x662F;pattern &#x7684;&#x4F4D;&#x7F6E;, &#x4E0D;&#x6355;&#x83B7;&#x5339;&#x914D;&#x7ED3;&#x679C;.</td>
+<td>&#x2018;Windows (?=2000)&#x2019;&#x5339;&#x914D; &#x201C;Windows2000&#x201D; &#x4E2D;&#x7684; &#x201C;Windows&#x201D;; &#x4E0D;&#x5339;&#x914D; &#x201C;Windows3.1&#x201D; &#x4E2D;&#x7684; &#x201C;Windows&#x201D;</td>
+</tr>
+<tr>
+<td>(?!pattern)</td>
+<td>&#x987A;&#x5E8F;&#x5426;&#x5B9A;&#x73AF;&#x89C6;, &#x5339;&#x914D;&#x540E;&#x9762;&#x4E0D;&#x662F; pattern &#x7684;&#x4F4D;&#x7F6E;, &#x4E0D;&#x6355;&#x83B7;&#x5339;&#x914D;&#x7ED3;&#x679C;.</td>
+<td>&#x2018;Windows (?!2000)&#x2019;&#x5339;&#x914D; &#x201C;Windows3.1&#x201D; &#x4E2D;&#x7684; &#x201C;Windows&#x201D;; &#x4E0D;&#x5339;&#x914D; &#x201C;Windows2000&#x201D; &#x4E2D;&#x7684; &#x201C;Windows&#x201D;</td>
+</tr>
+<tr>
+<td>(?&lt;=pattern)</td>
+<td>&#x9006;&#x5E8F;&#x80AF;&#x5B9A;&#x73AF;&#x89C6;, &#x5339;&#x914D;&#x524D;&#x9762;&#x662F; pattern &#x7684;&#x4F4D;&#x7F6E;, &#x4E0D;&#x6355;&#x83B7;&#x5339;&#x914D;&#x7ED3;&#x679C;.</td>
+<td>&#x2018;(?&lt;=Office)2000&#x2019;&#x5339;&#x914D; &#x201C; Office2000&#x201D; &#x4E2D;&#x7684; &#x201C;2000&#x201D;; &#x4E0D;&#x5339;&#x914D; &#x201C;Windows2000&#x201D; &#x4E2D;&#x7684; &#x201C;2000&#x201D;</td>
+</tr>
+<tr>
+<td>(?&lt;!pattern)</td>
+<td>&#x9006;&#x5E8F;&#x5426;&#x5B9A;&#x73AF;&#x89C6;, &#x5339;&#x914D;&#x524D;&#x9762;&#x4E0D;&#x662F; pattern &#x7684;&#x4F4D;&#x7F6E;, &#x4E0D;&#x6355;&#x83B7;&#x5339;&#x914D;&#x7ED3;&#x679C;.</td>
+<td>&#x2018;(?&lt;!Office)2000&#x2019;&#x5339;&#x914D; &#x201C; Windows2000&#x201D; &#x4E2D;&#x7684; &#x201C;2000&#x201D;; &#x4E0D;&#x5339;&#x914D; &#x201C; Office2000&#x201D; &#x4E2D;&#x7684; &#x201C;2000&#x201D;</td>
+</tr>
+</tbody>
+</table>
+<h5 id="avascript-&#x4E2D;&#x53EA;&#x652F;&#x6301;&#x524D;&#x4E24;&#x79CD;-&#x4E5F;&#x5C31;&#x662F;&#x53EA;&#x652F;&#x6301;-&#x987A;&#x5E8F;&#x80AF;&#x5B9A;&#x73AF;&#x89C6;-&#x548C;-&#x987A;&#x5E8F;&#x5426;&#x5B9A;&#x73AF;&#x89C6;">avaScript &#x4E2D;&#x53EA;&#x652F;&#x6301;&#x524D;&#x4E24;&#x79CD;, &#x4E5F;&#x5C31;&#x662F;&#x53EA;&#x652F;&#x6301; &#x987A;&#x5E8F;&#x80AF;&#x5B9A;&#x73AF;&#x89C6; &#x548C; &#x987A;&#x5E8F;&#x5426;&#x5B9A;&#x73AF;&#x89C6;.</h5>
+<h5 id="exec&#x4E0E;match&#x7684;&#x533A;&#x522B;">exec&#x4E0E;match&#x7684;&#x533A;&#x522B;</h5>
+<p>1&#x3001;&#x5F53;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x65E0;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5E76;&#x4E14;&#x5B9A;&#x4E49;&#x4E3A;&#x975E;&#x5168;&#x5C40;&#x5339;&#x914D;&#x65F6;&#xFF0C;exec&#x548C;match&#x6267;&#x884C;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x6837;&#xFF0C;&#x5747;&#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x4E2A;&#x5339;&#x914D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5185;&#x5BB9;&#xFF1B;</p>
+<p>2&#x3001;&#x5F53;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x65E0;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5E76;&#x4E14;&#x5B9A;&#x4E49;&#x4E3A;&#x5168;&#x5C40;&#x5339;&#x914D;&#x65F6;&#xFF0C;exec&#x548C;match&#x6267;&#x884C;&#xFF0C;&#x505A;&#x5B58;&#x5728;&#x591A;&#x5904;&#x5339;&#x914D;&#x5185;&#x5BB9;&#xFF0C;&#x5219;match&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x591A;&#x4E2A;&#x5143;&#x7D20;&#x6570;&#x7EC4;&#xFF1B;</p>
+<p>3&#x3001;&#x5F53;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x6709;&#x5B50;&#x8868;&#x793A;&#x65F6;&#xFF0C;&#x5E76;&#x4E14;&#x5B9A;&#x4E49;&#x4E3A;&#x975E;&#x5168;&#x5C40;&#x5339;&#x914D;&#xFF0C;exec&#x548C;match&#x6267;&#x884C;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x6837;&#x5982;&#x4E0A;&#x8FB9;&#x7684;&#x7B2C;5&#x79CD;&#x60C5;&#x51B5;&#xFF1B;</p>
+<p>4&#x3001;&#x5F53;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x6709;&#x5B50;&#x8868;&#x793A;&#x65F6;&#xFF0C;&#x5E76;&#x4E14;&#x5B9A;&#x4E49;&#x4E3A;&#x5168;&#x5C40;&#x5339;&#x914D;&#xFF0C;exec&#x548C;match&#x6267;&#x884C;&#x7684;&#x7ED3;&#x679C;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x6B64;&#x65F6;match&#x5C06;&#x5FFD;&#x7565;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x53EA;&#x67E5;&#x627E;&#x5168;&#x5339;&#x914D;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5E76;&#x8FD4;&#x56DE;&#x6240;&#x6709;&#x5185;&#x5BB9;;</p>
+<p>&#x4E5F;&#x5C31;&#x8BF4;&#xFF0C;<strong>exec&#x4E0E;&#x5168;&#x5C40;&#x662F;&#x5426;&#x5B9A;&#x4E49;&#x65E0;&#x5173;&#x7CFB;&#xFF0C;&#x800C;match&#x5219;&#x4E8E;&#x5168;&#x5C40;&#x76F8;&#x5173;&#x8054;&#xFF0C;&#x5F53;&#x5B9A;&#x4E49;&#x4E3A;&#x975E;&#x5168;&#x5C40;&#xFF0C;&#x4E24;&#x8005;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x76F8;&#x540C;</strong></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="jsonp.html" class="navigation navigation-prev " aria-label="Previous page: 5.2 理解jsonp">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="format.html" class="navigation navigation-next " aria-label="Next page: 5.4 注释格式">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"5.3 正则表达式","level":"7.3","depth":1,"next":{"title":"5.4 注释格式","level":"7.4","depth":1,"path":"others/format.md","ref":"./others/format.md","articles":[]},"previous":{"title":"5.2 理解jsonp","level":"7.2","depth":1,"path":"others/jsonp.md","ref":"./others/jsonp.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/regExp.md","mtime":"2017-05-15T06:12:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-29T14:15:50.418Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
