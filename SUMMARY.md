@@ -6,6 +6,7 @@
   * [js记录](./js/index.md)
   * [prototype及原型链](./js/proto.md)
   * promise
+  * [inherit](./js/inherit.md)
 
 ### 2. webpack
 
@@ -14,8 +15,8 @@
 * [2.3 性能优化]()
 
 ### 3.react
-
-* [react](./js/reactFromSources.md)
+* [分析](./react/reactFromSources.md)
+* [pooledClass](./react/pooledClass.md)
 
 ### 3. 插件安装
 
@@ -28,4 +29,7 @@
 ### 5. 其他
 * [5.1 环境变量使用](./others/path.md)
 * [5.2 理解jsonp](./others/jsonp.md)
-* [5.3 正则表达式]()
+* [5.3 正则表达式](./others/regExp.md)
+* [5.4 注释格式](./others/format.md)
+* [5.5 n源码](./others/n.md)
+
