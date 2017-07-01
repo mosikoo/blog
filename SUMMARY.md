@@ -17,6 +17,7 @@
 ### 3.react
 * [分析](./react/reactFromSources.md)
 * [pooledClass](./react/pooledClass.md)
+* [DOMLazyTree](./react/DOMLazyTree.md)
 
 ### 3. 插件安装
 

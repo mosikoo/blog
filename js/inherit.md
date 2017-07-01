@@ -26,7 +26,7 @@ var _createClass = function () {
 }();
 
 function _classCallCheck(instance, Constructor) {
-  // 检车格式
+  // 检验instance格式
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
