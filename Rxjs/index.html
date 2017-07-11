@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>5.2 理解jsonp · GitBook</title>
+        <title>5.7 Rxjs浅理解 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="regExp.html" />
     
-    
-    <link rel="prev" href="path.html" />
+    <link rel="prev" href="../others/babel.html" />
     
 
     </head>
@@ -267,9 +265,9 @@
         
         
     
-        <li class="chapter " data-level="6.1" data-path="path.html">
+        <li class="chapter " data-level="6.1" data-path="../others/path.html">
             
-                <a href="path.html">
+                <a href="../others/path.html">
             
                     
                     5.1 环境变量使用
@@ -280,9 +278,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="6.2" data-path="jsonp.html">
+        <li class="chapter " data-level="6.2" data-path="../others/jsonp.html">
             
-                <a href="jsonp.html">
+                <a href="../others/jsonp.html">
             
                     
                     5.2 理解jsonp
@@ -293,9 +291,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.3" data-path="regExp.html">
+        <li class="chapter " data-level="6.3" data-path="../others/regExp.html">
             
-                <a href="regExp.html">
+                <a href="../others/regExp.html">
             
                     
                     5.3 正则表达式
@@ -306,9 +304,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.4" data-path="format.html">
+        <li class="chapter " data-level="6.4" data-path="../others/format.html">
             
-                <a href="format.html">
+                <a href="../others/format.html">
             
                     
                     5.4 注释格式
@@ -319,9 +317,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.5" data-path="n.html">
+        <li class="chapter " data-level="6.5" data-path="../others/n.html">
             
-                <a href="n.html">
+                <a href="../others/n.html">
             
                     
                     5.5 n源码
@@ -332,9 +330,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.6" data-path="babel.html">
+        <li class="chapter " data-level="6.6" data-path="../others/babel.html">
             
-                <a href="babel.html">
+                <a href="../others/babel.html">
             
                     
                     5.6 babel入门
@@ -345,9 +343,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.7" data-path="../Rxjs/">
+        <li class="chapter active" data-level="6.7" data-path="./">
             
-                <a href="../Rxjs/">
+                <a href="./">
             
                     
                     5.7 Rxjs浅理解
@@ -388,7 +386,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >5.2 理解jsonp</a>
+        <a href=".." >5.7 Rxjs浅理解</a>
     </h1>
 </div>
 
@@ -403,33 +401,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="jsonp">JSONP</h2>
-<blockquote>
-<p> JSONP&#x5C31;&#x662F;&#x5229;&#x7528;\<script\>&#x6807;&#x7B7E;&#x7684;&#x8DE8;&#x57DF;&#x80FD;&#x529B;&#x5B9E;&#x73B0;&#x8DE8;&#x57DF;&#x6570;&#x636E;&#x7684;&#x8BBF;&#x95EE;&#x3002;</script\></p>
-<p> &#x4F46;&#x662F;JSONP&#x53EA;&#x652F;&#x6301; GET &#x8BF7;&#x6C42;</p>
-</blockquote>
-<p>&#x5176;&#x5B9E;&#x4E0D;&#x4EC5;script&#x6807;&#x7B7E;&#x62E5;&#x6709;&#x8DE8;&#x57DF;&#x80FD;&#x529B;&#xFF0C; &#x53EA;&#x8981;&#x5E26;src&#x7684;&#x6807;&#x7B7E;&#x90FD;&#x5E26;&#x6709;&#x8DE8;&#x57DF;&#x80FD;&#x529B;</p>
-<hr>
-<p>&#x5728;js&#x52A0;&#x8F7D;&#x5B8C;&#x4E86;&#x540E;&#x4F1A;&#x89E6;&#x53D1;</p>
-<pre><code>script.onreadystatechange = script.onload = function() {}
-</code></pre><p>jsonp&#x8FC7;&#x7A0B;</p>
-<p>1&#x3001;&#x8BBE;&#x7F6E;&#x56DE;&#x8C03;&#x51FD;&#x6570;</p>
-<pre><code>window.callback= function back(resp) {
-    resolve(resp); // &#x5904;&#x7406;resp
+                                <h3 id="rxjs&#x8BB0;&#x5F55;">Rxjs&#x8BB0;&#x5F55;</h3>
+<p>&#x4E0E;Observe Pattern&#x4E0D;&#x540C;&#xFF0C; &#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x662F;&#x5148;&#x8BA2;&#x9605;&#xFF0C;&#x7136;&#x540E;&#x4F20;&#x53C2;&#x6570;&#x4ECE;&#x6E05;&#x5355;&#x4E2D;&#x53BB;&#x6267;&#x884C;</p>
+<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producer</span> </span>{
+    <span class="hljs-keyword">constructor</span>() {
+        <span class="hljs-keyword">this</span>.listeners = [];
+    }
+    addListener(listener) {
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> listener === <span class="hljs-string">&apos;function&apos;</span>) {
+            <span class="hljs-keyword">this</span>.listeners.push(listener)
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&apos;listener &#x5FC5;&#x9808;&#x662F; function&apos;</span>)
+        }
+    }
+    removeListener(listener) {
+        <span class="hljs-keyword">this</span>.listeners.splice(<span class="hljs-keyword">this</span>.listeners.indexOf(listener), <span class="hljs-number">1</span>)
+    }
+    notify(message) {
+        <span class="hljs-keyword">this</span>.listeners.forEach(listener =&gt; {
+            listener(message);
+        })
+    }
 }
-</code></pre><p>2&#x3001;&#x6DFB;&#x52A0;script&#x6807;&#x7B7E;&#xFF0C;&#x8BBE;&#x7F6E;onreadystatechange&#x4E0E;onload&#x51FD;&#x6570;&#xFF08;&#x89E6;&#x53D1;&#x540E;&#x5220;&#x9664;&#x6B64;&#x6807;&#x7B7E;&#xFF09;</p>
-<p>3&#x3001;&#x8BBE;&#x7F6E;src</p>
-<pre><code>script.src = `xxxx.jsonp?callback=callbackName`;
-</code></pre><p><strong>callback</strong>&#x662F;&#x524D;&#x540E;&#x7AEF;&#x7EA6;&#x5B9A;&#x7684;&#x81EA;&#x5B9A;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x662F;callback</p>
-<p>4&#x3001;&#x5728;&#x8BBE;&#x7F6E;&#x5B8C;src&#x540E;&#xFF0C;&#x52A0;&#x8F7D;&#x4E86;script&#x540E;&#x89E6;&#x53D1;&#x540E;&#x7AEF;&#x8FD4;&#x56DE;&#x7684;&#x51FD;&#x6570;</p>
-<p>&#x5047;&#x8BBE;&#x540E;&#x7AEF;&#x8FD4;&#x56DE;&#x4E86;</p>
-<pre><code>callbackName ({
-    name: &apos;tom&apos;,
-    age: 11
+</code></pre>
+<p>Rxjs&#x7C7B;&#x4F3C;&#x4E0E;&#x5148;&#x4F20;&#x53C2;&#x6570;&#xFF0C;&#x518D;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#x53BB;&#x6267;&#x884C;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> source = Rx.Observable
+    .create(
+        <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">observe</span>) </span>{
+          observe.next(<span class="hljs-number">1</span>);
+          observe.next(<span class="hljs-number">2</span>);
+        }
+    );
+
+source.subscribe({
+    next: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>{
+        <span class="hljs-built_in">console</span>.log(value)
+    },
+    complete: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;complete!&apos;</span>);
+    },
+    error: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
+        <span class="hljs-built_in">console</span>.log(error)
+    }
 })
-</code></pre><p>&#x7136;&#x540E;&#x8C03;&#x7528;&#x4E86;&#x524D;&#x7AEF;&#x8BBE;&#x7F6E;&#x7684;&#x51FD;&#x6570;</p>
-<hr>
-<p>&#x8BE6;&#x7EC6;&#x4EE3;&#x7801;&#x770B;utils&#x9879;&#x76EE;&#x4E2D;&#x7684;<a href="">fetch</a></p>
+</code></pre>
 
                                 
                                 </section>
@@ -457,14 +472,10 @@
 
             
                 
-                <a href="path.html" class="navigation navigation-prev " aria-label="Previous page: 5.1 环境变量使用">
+                <a href="../others/babel.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 5.6 babel入门">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="regExp.html" class="navigation navigation-next " aria-label="Next page: 5.3 正则表达式">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -473,7 +484,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"5.2 理解jsonp","level":"6.2","depth":1,"next":{"title":"5.3 正则表达式","level":"6.3","depth":1,"path":"others/regExp.md","ref":"./others/regExp.md","articles":[]},"previous":{"title":"5.1 环境变量使用","level":"6.1","depth":1,"path":"others/path.md","ref":"./others/path.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/jsonp.md","mtime":"2017-01-05T11:25:05.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-11T15:52:16.044Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"5.7 Rxjs浅理解","level":"6.7","depth":1,"previous":{"title":"5.6 babel入门","level":"6.6","depth":1,"path":"others/babel.md","ref":"./others/babel.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Rxjs/index.md","mtime":"2017-07-11T14:54:51.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-11T15:52:16.044Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
