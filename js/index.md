@@ -176,11 +176,6 @@ A instanceof B: 判断A是否是B的实例或者判断A的原型链的上层是�
 
 ![proto.png](../assets/proto.png)
 
-
-##### constructor是什么？？
-
-##### demo
-
 ```javascript
 class A {}
 class B extends A {}
@@ -191,11 +186,8 @@ a.__proto__ === A.prototype // true
 B.prototype.__proto__ === A.prototype // true 继承的原型链
 ```
 
-##### new 一个对象的必要性
 
-假设写一个Dialog，如果单纯用function是无法完成的，创造类后有this可以互相调用
-new 一个Dialog实例（如`var dialog = new Dialog(opt)`）,
-吊销dialog就需要直接调用dialog.destroy，是吊销这个dialog而不是另外一个实例，只因为this的存在.
+##### commonJs与ES6 Module
+> CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。
 
-其他的作用？？
-写一个简单的dialog 放到这里中介绍
+> CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
