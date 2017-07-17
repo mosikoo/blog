@@ -44,6 +44,18 @@ plugins: [
 ]
 ```
 
+入口文件中
+```
+if (module.hot) {
+  module.hot.accept();
+}
+```
+
+server.js中进行中间件配置
+
+### output中
+hash是全局的，只要一个file改变，hash都会改变，所以使用意义不大
+一般用`chunkhash`, 表示chunk的hash值
 
 ### loader整理
 
