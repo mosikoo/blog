@@ -1,17 +1,3 @@
-#### 问题
-onMouseEnter(e) {}
-e具体指什么，文档参考？
-
-
-
-多种参数下 选择不传递
-
-```
-renderTreeData(props) {
-    const validProps = props || this.props;
-}
-```
-
 #####生命周期调用
 
 ```
@@ -129,13 +115,13 @@ ReactElement.createElement = function(type, config, children) {} // React.create
 ```
 
 ReactChildren.js文件
-  **traverseAllChildren.js下迭代器遍历`getIteratorFn`不是很懂**
+  **traverseAllChildren.js下迭代器遍历`getIteratorFn`？？
 
 traverseAllChildren.js 主要是用于递归遍历+回调
 ForEachBookKeeping： 回调的函数来自于ForEachBookKeeping结合`PooledClass.js`中构建的实例，在最后会将实例保存下来。第二次forEach遍不会重复new（可能为了节省开销）
 ForEachBookKeeping： 比ForEachBookKeeping复杂，对于result结果，如果是数组或者是react对象，会再一次深入遍历，其他结果类似。
 
-代码很绕，应该再看一遍搞清思路
+代码很绕，应该再看一遍分析思路
 
 
 createClass.js文件

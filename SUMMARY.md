@@ -29,4 +29,6 @@
 * [5.5 n源码](./others/n.md)
 * [5.6 babel入门](./others/babel.md)
 * [5.7 Rxjs浅理解](./Rxjs/index.md)
+* [5.8 mongoDB](./others/MongoDB.md)
+* [5.9 Vue](./vue/vue.md)
 
