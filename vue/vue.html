@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>5.7 Rxjs浅理解 · GitBook</title>
+        <title>5.9 Vue · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../others/MongoDB.html" />
     
-    
-    <link rel="prev" href="../others/babel.html" />
+    <link rel="prev" href="../others/MongoDB.html" />
     
 
     </head>
@@ -345,9 +343,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="6.7" data-path="./">
+        <li class="chapter " data-level="6.7" data-path="../Rxjs/">
             
-                <a href="./">
+                <a href="../Rxjs/">
             
                     
                     5.7 Rxjs浅理解
@@ -371,9 +369,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.9" data-path="../vue/vue.html">
+        <li class="chapter active" data-level="6.9" data-path="vue.html">
             
-                <a href="../vue/vue.html">
+                <a href="vue.html">
             
                     
                     5.9 Vue
@@ -414,7 +412,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >5.7 Rxjs浅理解</a>
+        <a href=".." >5.9 Vue</a>
     </h1>
 </div>
 
@@ -429,49 +427,177 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="rxjs&#x8BB0;&#x5F55;">Rxjs&#x8BB0;&#x5F55;</h3>
-<p>&#x4E0E;Observe Pattern&#x4E0D;&#x540C;&#xFF0C; &#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x662F;&#x5148;&#x8BA2;&#x9605;&#xFF0C;&#x7136;&#x540E;&#x4F20;&#x53C2;&#x6570;&#x4ECE;&#x6E05;&#x5355;&#x4E2D;&#x53BB;&#x6267;&#x884C;</p>
-<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producer</span> </span>{
-    <span class="hljs-keyword">constructor</span>() {
-        <span class="hljs-keyword">this</span>.listeners = [];
+                                <h4 id="lifecycle">lifecycle</h4>
+<p><img src="https://cn.vuejs.org/images/lifecycle.png" alt=""></p>
+<h4 id="computed-vs-methods">computed vs methods</h4>
+<pre><code>var a = new Vue({
+  data: {
+    message: &apos;test&apos;
+  },
+  computed: {
+    computeMessage: function() {
+      return this.message + &apos;aaa&apos;; // &#x6709;&#x7F13;&#x5B58;
     }
-    addListener(listener) {
-        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> listener === <span class="hljs-string">&apos;function&apos;</span>) {
-            <span class="hljs-keyword">this</span>.listeners.push(listener)
-        } <span class="hljs-keyword">else</span> {
-            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&apos;listener &#x5FC5;&#x9808;&#x662F; function&apos;</span>)
-        }
+  },
+  methods: {
+    computeMessage: function() {
+      return this.message + &apos;aaa&apos;; // render &#x89E6;&#x53D1;
     }
-    removeListener(listener) {
-        <span class="hljs-keyword">this</span>.listeners.splice(<span class="hljs-keyword">this</span>.listeners.indexOf(listener), <span class="hljs-number">1</span>)
+  }
+})
+</code></pre><h4 id="watche">watche</h4>
+<pre><code>var vm = new Vue({
+  el: &apos;#demo&apos;,
+  data: {
+    firstName: &apos;Foo&apos;,
+    lastName: &apos;Bar&apos;,
+    fullName: &apos;Foo Bar&apos;
+  },
+  watch: {
+    firstName: function (val) {
+      this.fullName = val + &apos; &apos; + this.lastName
+    },
+    lastName: function (val) {
+      this.fullName = this.firstName + &apos; &apos; + val
     }
-    notify(message) {
-        <span class="hljs-keyword">this</span>.listeners.forEach(listener =&gt; {
-            listener(message);
-        })
-    }
+  }
+})
+</code></pre><h4 id="&#x7ED1;&#x5B9A;class">&#x7ED1;&#x5B9A;class</h4>
+<pre><code class="lang-js">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;static&quot;</span>
+     v-bind:<span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;{ active: isActive, &apos;text-danger&apos;: hasError }&quot;</span>&gt;
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+
+data: {
+  isActive: <span class="hljs-literal">true</span>,
+  hasError: <span class="hljs-literal">false</span>
 }
 </code></pre>
-<p>Rxjs&#x7C7B;&#x4F3C;&#x4E0E;&#x5148;&#x4F20;&#x53C2;&#x6570;&#xFF0C;&#x518D;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#x53BB;&#x6267;&#x884C;</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> source = Rx.Observable
-    .create(
-        <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">observe</span>) </span>{
-          observe.next(<span class="hljs-number">1</span>);
-          observe.next(<span class="hljs-number">2</span>);
-        }
-    );
-
-source.subscribe({
-    next: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>{
-        <span class="hljs-built_in">console</span>.log(value)
-    },
-    complete: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;complete!&apos;</span>);
-    },
-    error: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
-        <span class="hljs-built_in">console</span>.log(error)
-    }
+<h4 id="&#x7EC4;&#x4EF6;">&#x7EC4;&#x4EF6;</h4>
+<p>&#x5168;&#x5C40;&#x6CE8;&#x518C;</p>
+<pre><code>// &#x6CE8;&#x518C;
+Vue.component(&apos;my-component&apos;, {
+  template: &apos;&lt;div&gt;A custom component!&lt;/div&gt;&apos;
 })
+
+// &#x521B;&#x5EFA;&#x6839;&#x5B9E;&#x4F8B;
+new Vue({
+  el: &apos;#example&apos;
+})
+</code></pre><p>&#x5C40;&#x90E8;&#x6CE8;&#x518C;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> Child = {
+  template: <span class="hljs-string">&apos;&lt;div&gt;A custom component!&lt;/div&gt;&apos;</span>
+}
+<span class="hljs-keyword">new</span> Vue({
+  <span class="hljs-comment">// ...</span>
+  components: {
+    <span class="hljs-comment">// &lt;my-component&gt; &#x5C06;&#x53EA;&#x5728;&#x7236;&#x6A21;&#x677F;&#x53EF;&#x7528;</span>
+    <span class="hljs-string">&apos;my-component&apos;</span>: Child
+  }
+})
+</code></pre>
+<p>&#x6A21;&#x677F;&#x4E2D;data&#x5FC5;&#x987B;&#x662F;&#x51FD;&#x6570;</p>
+<p>&#x4F20;&#x9012;&#x7684;&#x503C;&#x4E0D;&#x77E5;&#x9053;&#x662F;&#x53D8;&#x91CF;&#x8FD8;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x8FD8;&#x662F;&#x6570;&#x5B57;</p>
+<pre><code class="lang-js">Vue.component(<span class="hljs-string">&apos;example&apos;</span>, {
+    propA: <span class="hljs-built_in">Number</span>,
+      propB: {
+      type: <span class="hljs-built_in">String</span>,
+      required: <span class="hljs-literal">true</span>&#xFF0C;
+      <span class="hljs-keyword">default</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> { message: <span class="hljs-string">&apos;hello&apos;</span>};
+      }
+      }
+})
+</code></pre>
+<h4 id="&#x6307;&#x4EE4;">&#x6307;&#x4EE4;</h4>
+<pre><code class="lang-js"><span class="hljs-comment">// &#x6CE8;&#x518C;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4; v-focus</span>
+Vue.directive(<span class="hljs-string">&apos;focus&apos;</span>, {
+  <span class="hljs-comment">// &#x5F53;&#x7ED1;&#x5B9A;&#x5143;&#x7D20;&#x63D2;&#x5165;&#x5230; DOM &#x4E2D;&#x3002;</span>
+  inserted: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">el</span>) </span>{
+    <span class="hljs-comment">// &#x805A;&#x7126;&#x5143;&#x7D20;</span>
+    el.focus()
+  }
+})
+<span class="hljs-comment">// &#x5C40;&#x90E8;</span>
+directives: {
+  focus: {
+    <span class="hljs-comment">// &#x6307;&#x4EE4;&#x7684;&#x5B9A;&#x4E49;---</span>
+  }
+}
+
+<span class="hljs-comment">// &#x4F7F;&#x7528;</span>
+&lt;input v-focus&gt;
+</code></pre>
+<h3 id="vuex">Vuex</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Vuex.Store({
+  state: {
+    count: <span class="hljs-number">0</span>
+  },
+  <span class="hljs-comment">// &#x76D1;&#x542C; mutation &#x5FC5;&#x987B;&#x662F;&#x540C;&#x6B65;&#x51FD;&#x6570;</span>
+  mutations: {
+    increment (state, payload) {
+      state.count++
+    }
+  },
+  <span class="hljs-comment">// &#x7528;&#x4E8E;&#x5FEB;&#x901F;&#x83B7;&#x53D6;&#x5904;&#x7406;&#x540E;&#x7684;&#x53D8;&#x91CF;</span>
+  getters: {
+    countGetter: state =&gt; {
+      <span class="hljs-keyword">return</span> state.count++
+    }
+  },
+  <span class="hljs-comment">// &#x5F02;&#x6B65;&#x5904;&#x7406;</span>
+  actions: {
+    increment (context, payload) {
+      context.commit(<span class="hljs-string">&apos;increment&apos;</span>)
+    }
+  }
+})
+<span class="hljs-comment">// &#x89E6;&#x53D1;mutations</span>
+store.commit(<span class="hljs-string">&apos;increment&apos;</span>)
+<span class="hljs-comment">// &#x89E6;&#x53D1;actions</span>
+store.dispatch(<span class="hljs-string">&apos;increment&apos;</span>)
+
+<span class="hljs-comment">// &#x4F7F;&#x7528;store&#x4E2D;&#x7684;&#x503C;</span>
+<span class="hljs-keyword">const</span> Counter = {
+  template: <span class="hljs-string">`&lt;div&gt;{{ count }}&lt;/div&gt;`</span>,
+  computed: {
+    count () {
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.$store.state.count
+    }    | &#x7B49;
+  }      | &#x4EF7;
+}        | &#x4E8E;
+         v
+<span class="hljs-comment">// mapState&#x4F7F;&#x7528;, &#x5728;&#x7EC4;&#x4EF6;&#x4E2D;&#x4F7F;&#x7528;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  computed: mapState([
+    <span class="hljs-comment">// &#x6620;&#x5C04; this.count &#x4E3A; store.state.count</span>
+    <span class="hljs-string">&apos;count&apos;</span>
+  ])
+}
+<span class="hljs-comment">// &#x6216;&#x8005;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-comment">// ...</span>
+  computed: mapState({
+    <span class="hljs-comment">// &#x7BAD;&#x5934;&#x51FD;&#x6570;&#x53EF;&#x4F7F;&#x4EE3;&#x7801;&#x66F4;&#x7B80;&#x7EC3;</span>
+    count: state =&gt; state.count,
+
+    <span class="hljs-comment">// &#x4F20;&#x5B57;&#x7B26;&#x4E32;&#x53C2;&#x6570; &apos;count&apos; &#x7B49;&#x540C;&#x4E8E; `state =&gt; state.count`</span>
+    countAlias: <span class="hljs-string">&apos;count&apos;</span>,
+
+    <span class="hljs-comment">// &#x4E3A;&#x4E86;&#x80FD;&#x591F;&#x4F7F;&#x7528; `this` &#x83B7;&#x53D6;&#x5C40;&#x90E8;&#x72B6;&#x6001;&#xFF0C;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x5E38;&#x89C4;&#x51FD;&#x6570;</span>
+    countPlusLocalState (state) {
+      <span class="hljs-keyword">return</span> state.count + <span class="hljs-keyword">this</span>.localCount
+    }
+  })
+}
+<span class="hljs-comment">// state&#x6DFB;&#x52A0;&#x65B0;&#x5C5E;&#x6027;</span>
+Vue.set(obj, <span class="hljs-string">&apos;newProp&apos;</span>, <span class="hljs-number">123</span>)
+<span class="hljs-comment">//&#x6216;</span>
+state.obj = {...state.obj, newProp: <span class="hljs-number">123</span>}
+
+<span class="hljs-comment">// &#x70ED;&#x91CD;&#x8F7D;</span>
+ store.hotUpdate({})
+
+<span class="hljs-comment">// modules</span>
 </code></pre>
 
                                 
@@ -500,14 +626,10 @@ source.subscribe({
 
             
                 
-                <a href="../others/babel.html" class="navigation navigation-prev " aria-label="Previous page: 5.6 babel入门">
+                <a href="../others/MongoDB.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 5.8 mongoDB">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="../others/MongoDB.html" class="navigation navigation-next " aria-label="Next page: 5.8 mongoDB">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -516,7 +638,7 @@ source.subscribe({
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"5.7 Rxjs浅理解","level":"6.7","depth":1,"next":{"title":"5.8 mongoDB","level":"6.8","depth":1,"path":"others/MongoDB.md","ref":"./others/MongoDB.md","articles":[]},"previous":{"title":"5.6 babel入门","level":"6.6","depth":1,"path":"others/babel.md","ref":"./others/babel.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Rxjs/index.md","mtime":"2017-07-11T14:54:51.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-20T17:22:59.247Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"5.9 Vue","level":"6.9","depth":1,"previous":{"title":"5.8 mongoDB","level":"6.8","depth":1,"path":"others/MongoDB.md","ref":"./others/MongoDB.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"vue/vue.md","mtime":"2017-07-19T09:02:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-20T17:22:59.247Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
