@@ -384,6 +384,19 @@
             
         </li>
     
+        <li class="chapter " data-level="6.10" data-path="css-name.html">
+            
+                <a href="css-name.html">
+            
+                    
+                    5.10 css-name
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -452,6 +465,7 @@ db.createCollection(&#x201C;collName&#x201D;, {size: 20,capped: 5, max: 100}); &
 db.getCollectionNames(); &#x5F53;&#x524D;db&#x6240;&#x6709;&#x96C6;&#x5408;
 db.printCollectionStats(); //&#x663E;&#x793A;&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x72B6;&#x6001;
 &#x589E;&#x5220;&#x6539;&#x67E5;
+db.users.drop() // &#x5220;&#x9664;&#x6574;&#x4E2A;collection
 db.userInfo.find(); &#x67E5;&#x627E;
 db.userInfo.save({name: 1, age: 2}) &#x65B0;&#x589E;
 db.userInfo.insert({name: 1})
@@ -475,7 +489,9 @@ const User = mongoose.model(&apos;User&apos;, userSchema); &#x751F;&#x6210;colle
 const user = new User({
   name: 1,
   pwd: 1
-}); &#x751F;&#x6210;model, use&#x53EF;&#x64CD;&#x4F5C;
+}).save().then(); //&#x751F;&#x6210;model, use&#x53EF;&#x64CD;&#x4F5C;
+
+User.find({}) // collection&#x7684;find&#x64CD;&#x4F5C;
 </code></pre><p>&#x62A5;&#x9519;&#x5904;&#x7406;</p>
 <blockquote>
 <p><code>mongoose.connect(&apos;mongodb://localhost/myblog&apos;)</code>&#x4F1A;&#x62A5;&#x9519;&#x56E0;&#x4E3A;&#x4E0D;&#x8BC6;&#x522B;localhost &#x2014;&#x2014;&gt;<code>mongoose.connect(&apos;mongodb://127.0.0.1/myblog&apos;)</code></p>
@@ -525,7 +541,7 @@ const user = new User({
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"5.8 mongoDB","level":"6.8","depth":1,"next":{"title":"5.9 Vue","level":"6.9","depth":1,"path":"vue/vue.md","ref":"./vue/vue.md","articles":[]},"previous":{"title":"5.7 Rxjs浅理解","level":"6.7","depth":1,"path":"Rxjs/index.md","ref":"./Rxjs/index.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/MongoDB.md","mtime":"2017-07-20T17:19:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-20T17:22:59.247Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"5.8 mongoDB","level":"6.8","depth":1,"next":{"title":"5.9 Vue","level":"6.9","depth":1,"path":"vue/vue.md","ref":"./vue/vue.md","articles":[]},"previous":{"title":"5.7 Rxjs浅理解","level":"6.7","depth":1,"path":"Rxjs/index.md","ref":"./Rxjs/index.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/MongoDB.md","mtime":"2017-07-23T17:11:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-24T15:57:51.609Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
