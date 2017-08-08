@@ -67,13 +67,13 @@ background-image: url(/assets/spinner.gif);
 
 ```
 ### loader整理
-url-loader
-file-loader
-css-loader
+css-loader 将css中的`url(xxx.jpg)`提取出来，转换成`url(require(./xxx/xx.jpg))`
 style-loader
 bable-loader
 postcss-loader
-file-loader 可以指定要复制和放置资源文件的位置，以及如何使用版本哈希命名以获得更好的缓存。此外，这意味着 你可以就近管理你的图片文件，可以使用相对路径而不用担心布署时URL问题。使用正确的配置，Webpack 将会在打包输出中自动重写文件路径为正确的URL。
-
+file-loader (移动文件)可以指定要复制和放置资源文件的位置，以及如何使用版本哈希命名以获得更好的缓存。此外，这意味着 你可以就近管理你的图片文件，可以使用相对路径而不用担心布署时URL问题。使用正确的配置，Webpack 将会在打包输出中自动重写文件路径为正确的URL。
 url-loader 允许你有条件将文件转换为内联的 base-64 URL（当文件小于给定的阈值），这会减少小文件的 HTTP 请求。如果文件大于该阈值，会自动的交给 file-loader 处理。
 ### plugins整理
+extract-text-webpack-plugin
+* 不能修改文件路径？
+* 有单独缓存，没有热替换

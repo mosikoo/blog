@@ -27,12 +27,12 @@ db.createCollection(“collName”, {size: 20,capped: 5, max: 100}); 创建colle
 db.getCollectionNames(); 当前db所有集合
 db.printCollectionStats(); //显示聚集索引状态
 增删改查
+db.users.drop() // 删除整个collection
 db.userInfo.find(); 查找
 db.userInfo.save({name: 1, age: 2}) 新增
 db.userInfo.insert({name: 1})
 db.users.update({age: 25}, {$set: {name: 'changeName'}}, false, true); 第三个参数默认false, true表示找不到则传入这个数据。第四个参数默认false，表示只修改找到的第一条数据，否则全局修改
 db.userInfo.remove({name: 1}) 删除
-
 ```
 
 
@@ -57,8 +57,9 @@ const User = mongoose.model('User', userSchema); 生成collection
 const user = new User({
   name: 1,
   pwd: 1
-}); 生成model, use可操作
+}).save().then(); //生成model, use可操作
 
+User.find({}) // collection的find操作
 
 ```
 

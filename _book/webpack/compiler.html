@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>分析 · GitBook</title>
+        <title>2.1 compiler · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="pooledClass.html" />
     
+    <link rel="prev" href="../js/inherit.html" />
     
 
     </head>
@@ -153,9 +153,9 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="../webpack/compiler.html">
+        <li class="chapter active" data-level="3.1" data-path="compiler.html">
             
-                <a href="../webpack/compiler.html">
+                <a href="compiler.html">
             
                     
                     2.1 compiler
@@ -199,9 +199,9 @@
         
         
     
-        <li class="chapter active" data-level="4.1" data-path="reactFromSources.html">
+        <li class="chapter " data-level="4.1" data-path="../react/reactFromSources.html">
             
-                <a href="reactFromSources.html">
+                <a href="../react/reactFromSources.html">
             
                     
                     分析
@@ -212,9 +212,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="pooledClass.html">
+        <li class="chapter " data-level="4.2" data-path="../react/pooledClass.html">
             
-                <a href="pooledClass.html">
+                <a href="../react/pooledClass.html">
             
                     
                     pooledClass
@@ -225,9 +225,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.3" data-path="DOMLazyTree.html">
+        <li class="chapter " data-level="4.3" data-path="../react/DOMLazyTree.html">
             
-                <a href="DOMLazyTree.html">
+                <a href="../react/DOMLazyTree.html">
             
                     
                     DOMLazyTree
@@ -438,7 +438,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >分析</a>
+        <a href=".." >2.1 compiler</a>
     </h1>
 </div>
 
@@ -453,128 +453,64 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h5 id="&#x751F;&#x547D;&#x5468;&#x671F;&#x8C03;&#x7528;">&#x751F;&#x547D;&#x5468;&#x671F;&#x8C03;&#x7528;</h5>
-<pre><code>react&#x8C03;&#x7528;
-
-/* &#x7B2C;&#x4E00;&#x6B21; render */
-getDefaultProps  
-getInitialState  
-componentWillMount  
-render  
-componentDidMount  
-/* &#x7B2C;&#x4E8C;&#x6B21; render */
-componentWillReceiveProps(nextPorps)     &#x53EA;&#x6709;&#x8FD9;&#x91CC;&#x624D;&#x80FD;&#x7528;setState&#xFF0C; &#x4EE5;&#x4E0B;&#x51FD;&#x6570;&#x7528;&#x6B7B;&#x5FAA;&#x73AF;
-&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x66F4;&#x65B0;&#x67D0;&#x4E9B;state&#xFF0C;&#xFF08;&#x8FD9;&#x4E9B;state&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;&#x662F;&#x6839;&#x636E;props&#x6765;&#x8BBE;&#x7F6E;&#x7684;&#xFF09;
-shouldComponentUpdate (nextProps, nextState)
-componentWillUpdate(nextProps, nextState)
-render  
-componentDidUpdate(prevProps, prevState )
-
-/* mount */
-getDefaultProps  
-getInitialState  
-componentWillMount  
-render  
-componentDidMount  
-/* unmount */
-componentWillUnmount
-</code></pre><h5 id="&#x5EF6;&#x65F6;&#x51FD;&#x6570;">&#x5EF6;&#x65F6;&#x51FD;&#x6570;</h5>
-<pre><code>function buffer(fn, ms) {
-  let timer;
-
-  function clear() {
-    if (timer) {
-      clearTimeout(timer);
-      timer = null;
-    }
-  }
-
-  function bufferFn() {
-    clear();
-    timer = setTimeout(fn, ms);
-  }
-
-  bufferFn.clear = clear;
-
-  return bufferFn;
-}
-</code></pre><h5 id="&#x521B;&#x5EFA;&#x4E0E;&#x79FB;&#x9664;&#x7EC4;&#x4EF6;">&#x521B;&#x5EFA;&#x4E0E;&#x79FB;&#x9664;&#x7EC4;&#x4EF6;</h5>
+                                <h3 id="tapable">Tapable</h3>
 <blockquote>
-<p>&#x9664;&#x975E;&#x662F;&#x9876;&#x5C42;&#x521B;&#x5EFA;&#x6216;&#x79FB;&#x9664;&#x7EC4;&#x4EF6;&#xFF0C;&#x5426;&#x5219;&#x6CA1;&#x5FC5;&#x8981;&#x7528;&#x5230;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;</p>
+<p>&#x662F;webpack&#x4E2D;compiler&#x7684;&#x5E95;&#x5C42;&#x5C01;&#x88C5;&#xFF0C;&#x662F;&#x4E8B;&#x4EF6;&#x53D1;&#x5E03;&#x8BA2;&#x9605;&#x6267;&#x884C;&#x7684;&#x63D2;&#x4EF6;&#x67B6;&#x6784;</p>
 </blockquote>
-<pre><code>function removeContainer(instance) {
-  if (instance._container) { // instance._container &#x662F;&#x8981;&#x79FB;&#x9664;&#x7684;dom&#x5143;&#x7D20;
-      const container = instance._container;
-      ReactDOM.unmountComponentAtNode(container);
-      container.parentNode.removeChild(container);
-      instance._container = null;
-  }
+<p>&#x7B80;&#x5355;&#x6A21;&#x62DF;</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MyClass</span>(<span class="hljs-params"></span>) </span>{
+    Tapable.call(<span class="hljs-keyword">this</span>);
 }
 
-function getContainer(instance) { // instance &#x4E3A; this
-    const popupContainer = document.createElement(&apos;div&apos;);
-    const mountNode = document.body;
-    mountNode.appendChild(popupContainer);
-    return popupContainer;
-}
+MyClass.prototype = <span class="hljs-built_in">Object</span>.create(Tapable.prototype);
 
-function renderComponent() {
-  // instance &#x4E3A;&#x7EC4;&#x4EF6;&#xFF0C;instance_container&#x4E3A;&#x5BB9;&#x5668; &#x4E24;&#x8005;&#x533A;&#x522B;&#x6BD4;&#x8F83;
-  ReactDOM.unstable_renderSubtreeIntoContainer(instance,
-    component, instance._container,
-    function callback() {
-      instance._component = this;
-      if (ready) {
-        ready.call(this);
-      }
-    });
-}
-</code></pre><h5 id="&#x83B7;&#x53D6;&#x81EA;&#x8EAB;">&#x83B7;&#x53D6;&#x81EA;&#x8EAB;</h5>
-<pre><code>ReactDOM.findDOMNode(this)
-</code></pre><h3 id="&#x6E90;&#x7801;">&#x6E90;&#x7801;</h3>
-<p>ReactBaseClasses&#x6587;&#x4EF6;&#x5B9A;&#x4E49;<code>React.Component</code>&#x3001;<code>React.PureComponent</code>,&#x7528;&#x4E8E;&#x7EE7;&#x627F;</p>
-<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ReactComponent</span>(<span class="hljs-params">props, context, updater</span>) </span>{
-  <span class="hljs-keyword">this</span>.props = props;
-  <span class="hljs-keyword">this</span>.context = context;
-  <span class="hljs-keyword">this</span>.refs = emptyObject;
-  <span class="hljs-comment">// We initialize the default updater but the real one gets injected by the</span>
-  <span class="hljs-comment">// renderer.</span>
-  <span class="hljs-keyword">this</span>.updater = updater || ReactNoopUpdateQueue;
-}
-<span class="hljs-comment">// prototype&#x5B9A;&#x4E49;&#x4E86;`setState`, `forceUpdate`, `isReactComponent`</span>
+<span class="hljs-keyword">const</span> compiler = <span class="hljs-keyword">new</span> MyClass();
+
+compiler.plugin(<span class="hljs-string">&apos;emit&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+
+}); <span class="hljs-comment">// &#x7C7B;&#x4F3C;&#x4E8E;&#x89C2;&#x5BDF;&#x8005;&#x4E8B;&#x4EF6;&#x4E2D;&#x7684;on</span>
 </code></pre>
-<p>ReactElement.js&#x6587;&#x4EF6;
-&#x6784;&#x9020;React&#x5143;&#x7D20;</p>
-<pre><code class="lang-javascript">ReactElement(type, key, ref, self, source, owner, props)
-ReactElement.cloneElement = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">element, config, children</span>) </span>{} <span class="hljs-comment">// React.cloneElement(&lt;Demo /&gt;, {value: 10}, children);</span>
-ReactElement.createElement = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">type, config, children</span>) </span>{} <span class="hljs-comment">// React.createElement(Demo, {value: 10}, children);</span>
-</code></pre>
-<p>ReactChildren.js&#x6587;&#x4EF6;
-  **traverseAllChildren.js&#x4E0B;&#x8FED;&#x4EE3;&#x5668;&#x904D;&#x5386;<code>getIteratorFn</code>&#xFF1F;&#xFF1F;</p>
-<p>traverseAllChildren.js &#x4E3B;&#x8981;&#x662F;&#x7528;&#x4E8E;&#x9012;&#x5F52;&#x904D;&#x5386;+&#x56DE;&#x8C03;
-ForEachBookKeeping&#xFF1A; &#x56DE;&#x8C03;&#x7684;&#x51FD;&#x6570;&#x6765;&#x81EA;&#x4E8E;ForEachBookKeeping&#x7ED3;&#x5408;<code>PooledClass.js</code>&#x4E2D;&#x6784;&#x5EFA;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x5728;&#x6700;&#x540E;&#x4F1A;&#x5C06;&#x5B9E;&#x4F8B;&#x4FDD;&#x5B58;&#x4E0B;&#x6765;&#x3002;&#x7B2C;&#x4E8C;&#x6B21;forEach&#x904D;&#x4E0D;&#x4F1A;&#x91CD;&#x590D;new&#xFF08;&#x53EF;&#x80FD;&#x4E3A;&#x4E86;&#x8282;&#x7701;&#x5F00;&#x9500;&#xFF09;
-ForEachBookKeeping&#xFF1A; &#x6BD4;ForEachBookKeeping&#x590D;&#x6742;&#xFF0C;&#x5BF9;&#x4E8E;result&#x7ED3;&#x679C;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x6570;&#x7EC4;&#x6216;&#x8005;&#x662F;react&#x5BF9;&#x8C61;&#xFF0C;&#x4F1A;&#x518D;&#x4E00;&#x6B21;&#x6DF1;&#x5165;&#x904D;&#x5386;&#xFF0C;&#x5176;&#x4ED6;&#x7ED3;&#x679C;&#x7C7B;&#x4F3C;&#x3002;</p>
-<p>&#x4EE3;&#x7801;&#x5F88;&#x7ED5;&#xFF0C;&#x5E94;&#x8BE5;&#x518D;&#x770B;&#x4E00;&#x904D;&#x5206;&#x6790;&#x601D;&#x8DEF;</p>
-<p>createClass.js&#x6587;&#x4EF6;
-&#x5F15;&#x7528;&#x4E86;<code>create-react-class/factory</code>&#x5305;
-&#x8FD9;&#x4E2A;js&#x4F1A;&#x8FD4;&#x56DE;<code>createClass</code>&#x51FD;&#x6570;
-&#x8C03;&#x7528;<code>createClass(spec)</code>&#x8FD4;&#x56DE;&#x81EA;&#x5B9A;&#x4E49;&#x6784;&#x5EFA;&#x7684;<code>Constructor</code>&#x7C7B;&#xFF08;&#x4E5F;&#x5C31;&#x662F;&#x7EC4;&#x4EF6;&#xFF09;&#xFF0C;
-&#x518D;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x7C7B;&#x6784;&#x5EFA;&#x5B9E;&#x4F8B;</p>
-<p>&#x4E3B;&#x8981;&#x4EE5;&#x4E0B;&#x4E09;&#x4EF6;&#x4E8B;</p>
 <ul>
-<li>&#x5B9A;&#x4E49;&#x6784;&#x9020;&#x65B9;&#x6CD5;Constructor&#xFF0C;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4E2D;&#x8FDB;&#x884C;props&#xFF0C;refs&#x7B49;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5E76;&#x8C03;&#x7528;getInitialState&#x6765;&#x521D;&#x59CB;&#x5316;state</li>
-<li>&#x8C03;&#x7528;getDefaultProps&#xFF0C;&#x5E76;&#x653E;&#x5728;defaultProps&#x7C7B;&#x53D8;&#x91CF;&#x4E0A;&#x3002;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x4E0D;&#x5C5E;&#x4E8E;&#x67D0;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x53EF;&#x7406;&#x89E3;&#x4E3A;static &#x53D8;&#x91CF;</li>
-<li>&#x5C06;React&#x4E2D;&#x66B4;&#x9732;&#x7ED9;&#x5E94;&#x7528;&#xFF0C;&#x4F46;&#x5E94;&#x7528;&#x4E2D;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8BBE;&#x7F6E;&#x4E3A;null&#x3002;</li>
+<li><p>plugin: &#x7C7B;&#x4F3C;&#x4E8E;&#x5B9A;&#x8BED;-subscribe</p>
+</li>
+<li><p>applyPlugins: &#x7C7B;&#x4F3C;&#x4E8E;&#x53D1;&#x5E03;-publish</p>
+</li>
+<li><p>applyPluginsWaterfall: &#x7011;&#x5E03;&#x4E32;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4E0A;&#x6B21;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x4F5C;&#x4E3A;&#x4E0B;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x53C2;&#xFF08;&#x53EA;&#x662F;&#x66FF;&#x6362;init&#x53C2;&#x6570;&#xFF0C;&#x540E;&#x9762;&#x53C2;&#x6570;&#x4E0D;&#x53D8;&#xFF09;&#xFF0C;&#x8FD4;&#x56DE;&#x6700;&#x7EC8;&#x7ED3;&#x679C;</p>
+</li>
+<li><p>applyPluginsBailResult: &#x8FD4;&#x56DE;&#x503C;&#x4E0D;&#x662F;<code>undefined</code>&#x4FBF;&#x8FD4;&#x56DE;&#x4E2D;&#x65AD;&#x51FD;&#x6570;</p>
+</li>
+<li><p>applyPluginsAsync</p>
+</li>
 </ul>
-<p>ReactUpdates.js&#x6587;&#x4EF6;</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> ReactUpdates = {
-  ReactReconcileTransaction: <span class="hljs-literal">null</span>,
-  batchedUpdates: batchedUpdates, <span class="hljs-comment">// &#x6267;&#x884C;&#x5206;&#x6279;&#x7B56;&#x7565;&#x51FD;&#x6570;</span>
-  enqueueUpdate: enqueueUpdate,
-  flushBatchedUpdates: flushBatchedUpdates,
-  injection: ReactUpdatesInjection, <span class="hljs-comment">// &#x6CE8;&#x5C04;&#x51FD;&#x6570;</span>
+<pre><code class="lang-js">Tapable.prototype.applyPluginsAsyncSeries = Tapable.prototype.applyPluginsAsync = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">applyPluginsAsyncSeries</span>(<span class="hljs-params">name</span>) </span>{
+    <span class="hljs-keyword">var</span> args = <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>, <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">var</span> callback = args.pop();
+    <span class="hljs-keyword">var</span> plugins = <span class="hljs-keyword">this</span>._plugins[name];
+    <span class="hljs-keyword">if</span>(!plugins || plugins.length === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> callback();
+    <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">var</span> _this = <span class="hljs-keyword">this</span>;
+    args.push(copyProperties(callback, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">next</span>(<span class="hljs-params">err</span>) </span>{
+        <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">return</span> callback(err);
+        i++;
+        <span class="hljs-keyword">if</span>(i &gt;= plugins.length) {
+            <span class="hljs-keyword">return</span> callback();
+        }
+        plugins[i].apply(_this, args);
+    }));
+    <span class="hljs-comment">//  &#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;next()&#x51FD;&#x6570;&#xFF0C;&#x9700;&#x8981;&#x5728;plugin&#x4E2D;&#x5B9A;&#x4E49;next&#x624D;&#x4F1A;&#x6267;&#x884C;&#x4E0B;&#x4E00;&#x4E2A;plugin&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x5F02;&#x6B65;</span>
+    plugins[<span class="hljs-number">0</span>].apply(<span class="hljs-keyword">this</span>, args);
 };
 </code></pre>
+<ul>
+<li><p>applyPluginsAsyncSeriesBailResult: &#x4E0E;<code>applyPluginsAsync</code>&#x5DEE;&#x4E0D;&#x591A;&#xFF0C;<code>next</code>&#x51FD;&#x6570;&#x6709;&#x53C2;&#x6570;&#x4FBF;&#x4E2D;&#x65AD;&#x6267;&#x884C;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;</p>
+</li>
+<li><p>applyPluginsAsyncWaterfall(name, init, next): &#x5F02;&#x6B65;&#x4E32;&#x884C;&#xFF0C;value&#x4E3A;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x4F1A;&#x4EE3;&#x66FF;init&#x7684;&#x503C;</p>
+</li>
+<li><p>applyPluginsParallel: &#x5F02;&#x6B65;&#x5E76;&#x884C;&#xFF0C;remaining&#x4E3A;0&#x65F6;&#x8BF4;&#x660E;&#x6240;&#x6709;&#x5F02;&#x6B65;&#x6267;&#x884C;&#x5B8C;&#x6BD5;</p>
+</li>
+<li><p>applyPluginsParallelBailResult: &#x53C2;&#x6570;&#x4F1A;&#x4F9D;&#x6B21;&#x589E;&#x52A0;&#xFF0C;&#x8C03;&#x7528;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x6267;&#x884C;&#x56DE;&#x8C03;&#xFF0C;&#x56DE;&#x8C03;&#x7684;&#x53C2;&#x6570;&#x4E0D;&#x4E3A;&#x7A7A;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x6267;&#x884C;callback,&#x4E14;&#x540E;&#x7EED;&#x4E0D;&#x4F1A;&#x6267;&#x884C;</p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -602,10 +538,10 @@ ForEachBookKeeping&#xFF1A; &#x6BD4;ForEachBookKeeping&#x590D;&#x6742;&#xFF0C;&#x
 
             
                 
-                
-                <a href="pooledClass.html" class="navigation navigation-next navigation-unique" aria-label="Next page: pooledClass">
-                    <i class="fa fa-angle-right"></i>
+                <a href="../js/inherit.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: inherit">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -614,7 +550,7 @@ ForEachBookKeeping&#xFF1A; &#x6BD4;ForEachBookKeeping&#x590D;&#x6742;&#xFF0C;&#x
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"分析","level":"4.1","depth":1,"next":{"title":"pooledClass","level":"4.2","depth":1,"path":"react/pooledClass.md","ref":"./react/pooledClass.md","articles":[]},"previous":{"title":"2.3 性能优化","level":"3.3","depth":1,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"react/reactFromSources.md","mtime":"2017-07-20T17:16:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-08T02:37:21.564Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.1 compiler","level":"3.1","depth":1,"next":{"title":"2.2 loader开发","level":"3.2","depth":1,"ref":"","articles":[]},"previous":{"title":"inherit","level":"2.3","depth":1,"path":"js/inherit.md","ref":"./js/inherit.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"webpack/compiler.md","mtime":"2017-07-27T01:53:25.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-08T02:37:21.564Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

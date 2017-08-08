@@ -4,13 +4,12 @@
 
 ### 1. js专题
   * [js记录](./js/index.md)
-  * [promise, generator, async/await(待定...)]()
+  * [promise, generator, async/await](./js/async.md)
   * [inherit](./js/inherit.md)
 
 ### 2. webpack
-
-* [2.1 loader开发]()
-* [2.2 css优化]()
+* [2.1 compiler](./webpack/compiler.md)
+* [2.2 loader开发]()
 * [2.3 性能优化]()
 
 ### 3.react
@@ -31,4 +30,6 @@
 * [5.7 Rxjs浅理解](./Rxjs/index.md)
 * [5.8 mongoDB](./others/MongoDB.md)
 * [5.9 Vue](./vue/vue.md)
+* [5.10 css-name](./others/css-name.md)
+* [5.11 layout](./others/layout.md)
 

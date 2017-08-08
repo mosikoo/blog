@@ -161,7 +161,7 @@ const store = new Vuex.Store({
   },
   // 异步处理
   actions: {
-    increment (context, payload) {
+    increment (context, payload) { //  context类似与store
       context.commit('increment')
     }
   }
@@ -214,6 +214,5 @@ state.obj = {...state.obj, newProp: 123}
  
 // modules
  
-
 ```
 
