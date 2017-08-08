@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>5.2 理解jsonp · GitBook</title>
+        <title>5.11 layout · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="regExp.html" />
     
-    
-    <link rel="prev" href="path.html" />
+    <link rel="prev" href="css-name.html" />
     
 
     </head>
@@ -280,7 +278,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="6.2" data-path="jsonp.html">
+        <li class="chapter " data-level="6.2" data-path="jsonp.html">
             
                 <a href="jsonp.html">
             
@@ -397,7 +395,7 @@
             
         </li>
     
-        <li class="chapter " data-level="6.11" data-path="layout.html">
+        <li class="chapter active" data-level="6.11" data-path="layout.html">
             
                 <a href="layout.html">
             
@@ -440,7 +438,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >5.2 理解jsonp</a>
+        <a href=".." >5.11 layout</a>
     </h1>
 </div>
 
@@ -455,33 +453,92 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="jsonp">JSONP</h2>
-<blockquote>
-<p> JSONP&#x5C31;&#x662F;&#x5229;&#x7528;\<script\>&#x6807;&#x7B7E;&#x7684;&#x8DE8;&#x57DF;&#x80FD;&#x529B;&#x5B9E;&#x73B0;&#x8DE8;&#x57DF;&#x6570;&#x636E;&#x7684;&#x8BBF;&#x95EE;&#x3002;</script\></p>
-<p> &#x4F46;&#x662F;JSONP&#x53EA;&#x652F;&#x6301; GET &#x8BF7;&#x6C42;</p>
-</blockquote>
-<p>&#x5176;&#x5B9E;&#x4E0D;&#x4EC5;script&#x6807;&#x7B7E;&#x62E5;&#x6709;&#x8DE8;&#x57DF;&#x80FD;&#x529B;&#xFF0C; &#x53EA;&#x8981;&#x5E26;src&#x7684;&#x6807;&#x7B7E;&#x90FD;&#x5E26;&#x6709;&#x8DE8;&#x57DF;&#x80FD;&#x529B;</p>
-<hr>
-<p>&#x5728;js&#x52A0;&#x8F7D;&#x5B8C;&#x4E86;&#x540E;&#x4F1A;&#x89E6;&#x53D1;</p>
-<pre><code>script.onreadystatechange = script.onload = function() {}
-</code></pre><p>jsonp&#x8FC7;&#x7A0B;</p>
-<p>1&#x3001;&#x8BBE;&#x7F6E;&#x56DE;&#x8C03;&#x51FD;&#x6570;</p>
-<pre><code>window.callback= function back(resp) {
-    resolve(resp); // &#x5904;&#x7406;resp
+                                <h3 id="layout&#x5E03;&#x5C40;">Layout&#x5E03;&#x5C40;</h3>
+<h4 id="&#x4E24;&#x680F;&#x5F0F;&#x5E03;&#x5C40;">&#x4E24;&#x680F;&#x5F0F;&#x5E03;&#x5C40;</h4>
+<p></p>
+<pre><code class="lang-css">// &#x6E05;&#x695A;&#x6D6E;&#x52A8;
+.fn-clear {
+  zoom: 1
 }
-</code></pre><p>2&#x3001;&#x6DFB;&#x52A0;script&#x6807;&#x7B7E;&#xFF0C;&#x8BBE;&#x7F6E;onreadystatechange&#x4E0E;onload&#x51FD;&#x6570;&#xFF08;&#x89E6;&#x53D1;&#x540E;&#x5220;&#x9664;&#x6B64;&#x6807;&#x7B7E;&#xFF09;</p>
-<p>3&#x3001;&#x8BBE;&#x7F6E;src</p>
-<pre><code>script.src = `xxxx.jsonp?callback=callbackName`;
-</code></pre><p><strong>callback</strong>&#x662F;&#x524D;&#x540E;&#x7AEF;&#x7EA6;&#x5B9A;&#x7684;&#x81EA;&#x5B9A;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x662F;callback</p>
-<p>4&#x3001;&#x5728;&#x8BBE;&#x7F6E;&#x5B8C;src&#x540E;&#xFF0C;&#x52A0;&#x8F7D;&#x4E86;script&#x540E;&#x89E6;&#x53D1;&#x540E;&#x7AEF;&#x8FD4;&#x56DE;&#x7684;&#x51FD;&#x6570;</p>
-<p>&#x5047;&#x8BBE;&#x540E;&#x7AEF;&#x8FD4;&#x56DE;&#x4E86;</p>
-<pre><code>callbackName ({
-    name: &apos;tom&apos;,
-    age: 11
-})
-</code></pre><p>&#x7136;&#x540E;&#x8C03;&#x7528;&#x4E86;&#x524D;&#x7AEF;&#x8BBE;&#x7F6E;&#x7684;&#x51FD;&#x6570;</p>
-<hr>
-<p>&#x8BE6;&#x7EC6;&#x4EE3;&#x7801;&#x770B;utils&#x9879;&#x76EE;&#x4E2D;&#x7684;<a href="">fetch</a></p>
+div {
+    box-sizing: border-box;
+}
+.fn-clear:after {
+  content: &apos;&apos;;
+  display: block;
+  visibility: hidden;
+  inline-height: 0;
+  clear: both;
+  overflow: hidden;
+}
+.a {
+  background: lightblue;
+  text-align: center;
+  font-size: 32px;
+  line-height: 200px;
+}
+.b {
+  background: yellowgreen;
+  font-size: 32px;
+  line-height: 200px;
+  text-align: center;
+}
+</code></pre>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fn-clear&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left a&quot;</span>&gt;</span>left<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right b&quot;</span>&gt;</span>right<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>&#x5DE6;&#x8FB9;&#x81EA;&#x9002;&#x5E94;&#xFF0C;&#x53F3;&#x8FB9;&#x56FA;&#x5B9A;&#x5BBD;&#x5EA6;200px</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fn-clear&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left a&quot;</span>&gt;</span>left<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right b&quot;</span>&gt;</span>right<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-css"><span class="hljs-selector-class">.left</span> {
+  <span class="hljs-attribute">float</span>: left;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">200px</span>;
+}
+<span class="hljs-selector-class">.right</span> {
+  <span class="hljs-attribute">float</span>: left;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+  <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">200px</span>;
+}
+</code></pre>
+<p>&#x53F3;&#x8FB9;&#x81EA;&#x9002;&#x5E94;&#xFF0C;&#x5DE6;&#x8FB9;&#x56FA;&#x5B9A;&#x5BBD;200px</p>
+<pre><code class="lang-html">// &#x987A;&#x5E8F;&#x53CD;&#x4E00;&#x53CD;
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fn-clear&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right a&quot;</span>&gt;</span>right<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left b&quot;</span>&gt;</span>left<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-css"><span class="hljs-selector-class">.left</span> {
+  <span class="hljs-attribute">float</span>: right;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+  <span class="hljs-attribute">margin-right</span>: -<span class="hljs-number">200px</span>;
+}
+<span class="hljs-selector-class">.right</span> {
+  <span class="hljs-attribute">float</span>: right;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">200px</span>;
+}
+</code></pre>
+<p>&#x4E24;&#x8FB9;&#x957F;&#x5EA6;&#x56FA;&#x5B9A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fn-clear&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;min-width: 400px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left a&quot;</span>&gt;</span>left<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right b&quot;</span>&gt;</span>right<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-css"><span class="hljs-selector-class">.left</span> {
+  <span class="hljs-attribute">float</span>: left;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+}
+<span class="hljs-selector-class">.right</span> {
+  <span class="hljs-attribute">float</span>: right;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+}
+</code></pre>
 
                                 
                                 </section>
@@ -509,14 +566,10 @@
 
             
                 
-                <a href="path.html" class="navigation navigation-prev " aria-label="Previous page: 5.1 环境变量使用">
+                <a href="css-name.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 5.10 css-name">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="regExp.html" class="navigation navigation-next " aria-label="Next page: 5.3 正则表达式">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -525,7 +578,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"5.2 理解jsonp","level":"6.2","depth":1,"next":{"title":"5.3 正则表达式","level":"6.3","depth":1,"path":"others/regExp.md","ref":"./others/regExp.md","articles":[]},"previous":{"title":"5.1 环境变量使用","level":"6.1","depth":1,"path":"others/path.md","ref":"./others/path.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/jsonp.md","mtime":"2017-01-05T11:25:05.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-08T02:37:21.564Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"5.11 layout","level":"6.11","depth":1,"previous":{"title":"5.10 css-name","level":"6.10","depth":1,"path":"others/css-name.md","ref":"./others/css-name.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others/layout.md","mtime":"2017-07-24T18:04:55.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-08T02:37:21.564Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

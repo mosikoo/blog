@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>inherit · GitBook</title>
+        <title>promise, generator, async/await · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../webpack/compiler.html" />
+    <link rel="next" href="inherit.html" />
     
     
-    <link rel="prev" href="async.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -122,7 +122,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="async.html">
+        <li class="chapter active" data-level="2.2" data-path="async.html">
             
                 <a href="async.html">
             
@@ -135,7 +135,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.3" data-path="inherit.html">
+        <li class="chapter " data-level="2.3" data-path="inherit.html">
             
                 <a href="inherit.html">
             
@@ -440,7 +440,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >inherit</a>
+        <a href=".." >promise, generator, async/await</a>
     </h1>
 </div>
 
@@ -455,118 +455,98 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x7EE7;&#x627F;&#x5199;&#x6CD5;">&#x7EE7;&#x627F;&#x5199;&#x6CD5;</h3>
-<p>&#x770B;&#x4E86;babel&#x8F6C;jsx&#x540E;&#x7684;&#x6E90;&#x7801;&#x7684;&#x5199;&#x6CD5;&#xFF0C;&#x89C9;&#x5F97;&#x8FD9;&#x6837;&#x5199;&#x975E;&#x5E38;&#x5408;&#x7406;&#xFF0C;&#x4E14;&#x7528;&#x4E86;<code>__proto__</code>&#x7EE7;&#x627F;&#x4E86;&#x9759;&#x6001;&#x5C5E;&#x6027;</p>
-<p>&#x4E0A;&#x6E90;&#x7801;</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> _createClass = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">defineProperties</span>(<span class="hljs-params">target, props</span>) </span>{
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; props.length; i++) {
-      <span class="hljs-keyword">var</span> descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || <span class="hljs-literal">false</span>;
-      descriptor.configurable = <span class="hljs-literal">true</span>;
-      <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;value&quot;</span> <span class="hljs-keyword">in</span> descriptor)
-        descriptor.writable = <span class="hljs-literal">true</span>;
-      <span class="hljs-built_in">Object</span>.defineProperty(target, descriptor.key, descriptor); 
-    } 
-  } 
-
-  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">Constructor, protoProps, staticProps</span>) </span>{
-    <span class="hljs-keyword">if</span> (protoProps)
-      defineProperties(Constructor.prototype, protoProps); 
-    <span class="hljs-keyword">if</span> (staticProps)
-      defineProperties(Constructor, staticProps);
-    <span class="hljs-keyword">return</span> Constructor;
-  };
-}();
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_classCallCheck</span>(<span class="hljs-params">instance, Constructor</span>) </span>{
-  <span class="hljs-comment">// &#x68C0;&#x9A8C;instance&#x683C;&#x5F0F;</span>
-  <span class="hljs-keyword">if</span> (!(instance <span class="hljs-keyword">instanceof</span> Constructor)) {
-    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">&quot;Cannot call a class as a function&quot;</span>);
-  }
+                                <h3 id="generator">generator</h3>
+<h5 id="&#x7B80;&#x5355;&#x7684;demo">&#x7B80;&#x5355;&#x7684;demo</h5>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> *<span class="hljs-title">demo</span>(<span class="hljs-params">x</span>) </span>{
+  <span class="hljs-keyword">const</span> p = <span class="hljs-keyword">yield</span> x + <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">yield</span> p;
 }
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_possibleConstructorReturn</span>(<span class="hljs-params">self, call</span>) </span>{ 
-  <span class="hljs-keyword">if</span> (!self) { 
-    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">ReferenceError</span>(<span class="hljs-string">&quot;this hasn&apos;t been initialised - super() hasn&apos;t been called&quot;</span>); 
-  } 
-  <span class="hljs-keyword">return</span> call &amp;&amp; (<span class="hljs-keyword">typeof</span> call === <span class="hljs-string">&quot;object&quot;</span> || <span class="hljs-keyword">typeof</span> call === <span class="hljs-string">&quot;function&quot;</span>) ? call : self; 
-}
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_inherits</span>(<span class="hljs-params">subClass, superClass</span>) </span>{ 
-  <span class="hljs-comment">// &#x68C0;&#x9A8C;</span>
-  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> superClass !== <span class="hljs-string">&quot;function&quot;</span> &amp;&amp; superClass !== <span class="hljs-literal">null</span>) { 
-    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">&quot;Super expression must either be null or a function, not &quot;</span> + <span class="hljs-keyword">typeof</span> superClass); 
-  } 
-  <span class="hljs-comment">// &#x7EE7;&#x627F;&#x539F;&#x578B;</span>
-  subClass.prototype = <span class="hljs-built_in">Object</span>.create(superClass &amp;&amp; superClass.prototype, 
-    { <span class="hljs-keyword">constructor</span>: { value: subClass, enumerable: <span class="hljs-literal">false</span>, writable: <span class="hljs-literal">true</span>, configurable: <span class="hljs-literal">true</span> } }
-  );
-  <span class="hljs-comment">// &#x7EE7;&#x627F;&#x9759;&#x6001;&#x5C5E;&#x6027;</span>
-  <span class="hljs-keyword">if</span> (superClass)  
-    <span class="hljs-built_in">Object</span>.setPrototypeOf ? <span class="hljs-built_in">Object</span>.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}
-
-<span class="hljs-keyword">var</span> DemoPage = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">_Component</span>) </span>{
-  _inherits(DemoPage, _Component); <span class="hljs-comment">// prototype&#x53CA;__proto__&#x7EE7;&#x627F;</span>
-
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">DemoPage</span>(<span class="hljs-params">props</span>) </span>{
-    _classCallCheck(<span class="hljs-keyword">this</span>, DemoPage);
-
-    <span class="hljs-keyword">var</span> _this = _possibleConstructorReturn(<span class="hljs-keyword">this</span>, 
-      (DemoPage.__proto__ || <span class="hljs-built_in">Object</span>.getPrototypeOf(DemoPage)).call(<span class="hljs-keyword">this</span>, props)
-    ); <span class="hljs-comment">// &#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;</span>
-
-    _this.state = {
-      name: <span class="hljs-number">1</span>
-    };
-    <span class="hljs-keyword">return</span> _this;
-  }
-
-  _createClass(DemoPage, [{
-    key: <span class="hljs-string">&apos;componentDidUpdate&apos;</span>,
-    value: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">componentDidUpdate</span>(<span class="hljs-params"></span>) </span>{
-      <span class="hljs-built_in">console</span>.log(<span class="hljs-number">12</span>);
-    }
-  }, {
-    key: <span class="hljs-string">&apos;test&apos;</span>,
-    value: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{
-      <span class="hljs-keyword">this</span>.setState({
-        name: <span class="hljs-number">2</span>
-      });
-    }
-  }, {
-    key: <span class="hljs-string">&apos;render&apos;</span>,
-    value: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span>(<span class="hljs-params"></span>) </span>{
-      <span class="hljs-keyword">var</span> demo = _react2.default.createElement(
-        _componentDemo2.default,
-        { value: <span class="hljs-string">&apos;test&apos;</span> },
-        _react2.default.createElement(
-          <span class="hljs-string">&apos;div&apos;</span>,
-          <span class="hljs-literal">null</span>,
-          <span class="hljs-string">&apos;1&apos;</span>
-        ),
-        _react2.default.createElement(
-          <span class="hljs-string">&apos;div&apos;</span>,
-          <span class="hljs-literal">null</span>,
-          _react2.default.createElement(<span class="hljs-string">&apos;input&apos;</span>, <span class="hljs-literal">null</span>)
-        )
-      );
-      <span class="hljs-keyword">return</span> _react2.default.createElement(
-        <span class="hljs-string">&apos;div&apos;</span>,
-        { onClick: <span class="hljs-keyword">this</span>.test.bind(<span class="hljs-keyword">this</span>) },
-        _react2.default.createElement(
-          <span class="hljs-string">&apos;a&apos;</span>,
-          <span class="hljs-literal">null</span>,
-          <span class="hljs-string">&apos;1&apos;</span>
-        ),
-        demo
-      );
-    }
-  }]);
-
-  <span class="hljs-keyword">return</span> DemoPage;
-}(_react.Component);
+<span class="hljs-keyword">const</span> result = demo(<span class="hljs-number">1</span>);
+result.next() <span class="hljs-comment">// {value: 2, done: false};</span>
+result.next(<span class="hljs-number">33</span>) <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;p&#x7684;&#x503C;&#x4E3A;33 {value: 33, done: false};</span>
+result.next() <span class="hljs-comment">// {value: undefined, done: true}</span>
 </code></pre>
+<ul>
+<li>p&#x7684;&#x503C;&#x4E3A;next(&#x7B2C;&#x4E8C;&#x6B21;next)&#x4E2D;&#x4F20;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5426;&#x5219;&#x4E3A;<code>undefined</code>,&#x8FD9;&#x91CC;&#x4F20;&#x4E86;<code>33</code>&#xFF0C;&#x6240;&#x4EE5;<code>p: 33</code></li>
+<li>&#x6267;&#x884C;next&#x540E;value&#x7684;&#x503C;&#x4E3A;yield&#x540E;&#x9762;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;</li>
+</ul>
+<h5 id="generator&#x4E0E;promise&#x7ED3;&#x5408;">generator&#x4E0E;promise&#x7ED3;&#x5408;</h5>
+<p>demo</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sleep</span>(<span class="hljs-params">ms</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve) =&gt; {
+    setTimeout(resolve, <span class="hljs-number">2000</span>, <span class="hljs-string">&apos;done&apos;</span>);
+  });
+} 
+<span class="hljs-function"><span class="hljs-keyword">function</span> *<span class="hljs-title">demo</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">yield</span> sleep(<span class="hljs-number">2000</span>);
+}
+
+<span class="hljs-keyword">const</span> r = demo();
+<span class="hljs-keyword">const</span> result = r.next();
+result.value.then(content =&gt; {
+  <span class="hljs-built_in">console</span>.log(content); <span class="hljs-comment">// &apos;done&apos;</span>
+});
+</code></pre>
+<ul>
+<li>yield &#x4F20;&#x9012;&#x4E00;&#x4E2A;promise&#x5373;&#x53EF;</li>
+</ul>
+<h5 id="coroutine-&#x534F;&#x540C;&#x51FD;&#x6570;">coroutine &#x534F;&#x540C;&#x51FD;&#x6570;</h5>
+<blockquote>
+<p>nodeJs&#x4E2D;&#x6BD4;&#x8F83;&#x51FA;&#x540D;&#x662F;TJ&#x7684;<code>co</code></p>
+<p>yeild&#x8DDF;promise&#x5BF9;&#x8C61;&#x6216;Thunk&#x51FD;&#x6570;</p>
+</blockquote>
+<p>&#x7B80;&#x5355;&#x5B9E;&#x73B0;auto run</p>
+<pre><code class="lang-js"> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span>(<span class="hljs-params">fn</span>) </span>{
+  <span class="hljs-keyword">const</span> r = fn();
+  next();
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">next</span>(<span class="hljs-params">arg</span>) </span>{
+    <span class="hljs-keyword">const</span> result = r.next(arg);
+    <span class="hljs-keyword">if</span> (result.done) <span class="hljs-keyword">return</span> result.value;
+    result.value.then(content =&gt; {
+      next(content);
+    });
+  }
+}
+</code></pre>
+<p>co&#x7B80;&#x6613;&#x5B9E;&#x73B0;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x601D;&#x8DEF;,yield&#x4EE5;promise&#x4E3A;&#x4E3B;&#xFF08;4.x&#xFF09;</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">co1</span>(<span class="hljs-params">fn</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve, reject) =&gt; {
+    <span class="hljs-keyword">const</span> gen = fn();
+
+    fullfiled();
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fullfiled</span>(<span class="hljs-params">res</span>) </span>{
+      <span class="hljs-keyword">const</span> ret = gen.next(res);
+      next(ret);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">next</span>(<span class="hljs-params">ret</span>) </span>{
+      <span class="hljs-keyword">if</span> (ret.done) {
+        resolve(ret.value);
+      } <span class="hljs-keyword">else</span> {
+        ret.value.then(fullfiled)
+      }
+    }
+  });
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">testCo</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// const a = yield ([new Promise((res) =&gt; {</span>
+  <span class="hljs-comment">//   setTimeout(function() {console.log(1);res(&apos;first&apos;);}, 1000);</span>
+  <span class="hljs-comment">// }),</span>
+  <span class="hljs-comment">// new Promise(res =&gt; { setTimeout(function() {console.log(2);res(&apos;second&apos;);}, 1000)})</span>
+  <span class="hljs-comment">// ]);</span>
+  <span class="hljs-keyword">const</span> a = <span class="hljs-keyword">yield</span> (<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(res =&gt; { setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{<span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>);res(<span class="hljs-string">&apos;first result&apos;</span>);}, <span class="hljs-number">1000</span>)}));
+  <span class="hljs-built_in">console</span>.log(a, <span class="hljs-string">&apos;first&apos;</span>);
+  <span class="hljs-keyword">const</span> b = <span class="hljs-keyword">yield</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(res =&gt; { setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{<span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>);res(<span class="hljs-string">&apos;second result&apos;</span>);}, <span class="hljs-number">1000</span>)});
+  <span class="hljs-built_in">console</span>.log(b,<span class="hljs-string">&apos;second&apos;</span>);
+}
+
+co1(testCo).then(c =&gt; {
+  <span class="hljs-built_in">console</span>.log(c)
+});
+</code></pre>
+<p>Thunk&#x51FD;&#x6570;</p>
 
                                 
                                 </section>
@@ -594,12 +574,12 @@
 
             
                 
-                <a href="async.html" class="navigation navigation-prev " aria-label="Previous page: promise, generator, async/await">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: js记录">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../webpack/compiler.html" class="navigation navigation-next " aria-label="Next page: 2.1 compiler">
+                <a href="inherit.html" class="navigation navigation-next " aria-label="Next page: inherit">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -610,7 +590,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"inherit","level":"2.3","depth":1,"next":{"title":"2.1 compiler","level":"3.1","depth":1,"path":"webpack/compiler.md","ref":"./webpack/compiler.md","articles":[]},"previous":{"title":"promise, generator, async/await","level":"2.2","depth":1,"path":"js/async.md","ref":"./js/async.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js/inherit.md","mtime":"2017-06-30T09:13:27.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-08T02:37:21.564Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"promise, generator, async/await","level":"2.2","depth":1,"next":{"title":"inherit","level":"2.3","depth":1,"path":"js/inherit.md","ref":"./js/inherit.md","articles":[]},"previous":{"title":"js记录","level":"2.1","depth":1,"path":"js/index.md","ref":"./js/index.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js/async.md","mtime":"2017-08-08T02:30:20.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-08T02:37:21.564Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
