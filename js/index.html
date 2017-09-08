@@ -608,11 +608,62 @@ b.__proto__ === B.prototype <span class="hljs-comment">// true</span>
 a.__proto__ === A.prototype <span class="hljs-comment">// true</span>
 B.prototype.__proto__ === A.prototype <span class="hljs-comment">// true &#x7EE7;&#x627F;&#x7684;&#x539F;&#x578B;&#x94FE;</span>
 </code></pre>
-<h5 id="commonjs&#x4E0E;es6-module">commonJs&#x4E0E;ES6 Module</h5>
+<h4 id="commonjs&#x4E0E;es6-module">commonJs&#x4E0E;ES6 Module</h4>
 <blockquote>
 <p>CommonJS &#x6A21;&#x5757;&#x8F93;&#x51FA;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x503C;&#x7684;&#x62F7;&#x8D1D;&#xFF0C;ES6 &#x6A21;&#x5757;&#x8F93;&#x51FA;&#x7684;&#x662F;&#x503C;&#x7684;&#x5F15;&#x7528;&#x3002;</p>
 <p>CommonJS &#x6A21;&#x5757;&#x662F;&#x8FD0;&#x884C;&#x65F6;&#x52A0;&#x8F7D;&#xFF0C;ES6 &#x6A21;&#x5757;&#x662F;&#x7F16;&#x8BD1;&#x65F6;&#x8F93;&#x51FA;&#x63A5;&#x53E3;&#x3002;</p>
 </blockquote>
+<p>CommonJs&#x662F;&#x503C;&#x7684;&#x62F7;&#x8D1D;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> counter = <span class="hljs-number">3</span>;
+<span class="hljs-keyword">var</span> obj = {
+  counter: <span class="hljs-number">3</span>
+};
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">incCounter</span>(<span class="hljs-params"></span>) </span>{
+  obj.counter++;
+  counter++;
+}
+<span class="hljs-built_in">module</span>.exports = {
+  counter,
+  obj,
+  incCounter,
+};
+</code></pre>
+<p>&#x4EFB;&#x4F55;&#x6587;&#x4EF6;&#x5F15;&#x5165;<code>let counter = require(&apos;./lib&apos;);</code>,&#x65E0;&#x8BBA;&#x600E;&#x4E48;&#x6539;&#x53D8;&#xFF0C;&#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#x90FD;&#x4E0D;&#x4F1A;&#x53D8;&#xFF0C;&#x6709;&#x7F13;&#x5B58;&#x673A;&#x5236;</p>
+<p>ES6 &#x7C7B;&#x4F3C;&#x5982;&#x4E0B;&#x5199;&#x6CD5;&#xFF0C;&#x6BCF;&#x4E00;&#x6B21;&#x6539;&#x53D8;&#x90FD;&#x662F;&#x76F4;&#x63A5;&#x6539;&#x53D8;obj&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6240;&#x4EE5;&#x53EB;&#x505A;&#x52A8;&#x6001;&#x5F15;&#x7528;&#xFF0C;&#x6BCF;&#x6B21;&#x90FD;&#x4F1A;&#x6539;&#x53D8;
+ES6&#x4E2D; import&#x5F15;&#x5165;&#x4F1A;&#x63D0;&#x5347;&#x5230;&#x6700;&#x524D;&#x9762;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> isRun = <span class="hljs-literal">false</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">c</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">if</span> (isRun) {
+    <span class="hljs-keyword">return</span> isRun;
+  }
+  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>{
+
+  }
+  <span class="hljs-keyword">const</span> obj = {};
+  obj.a = <span class="hljs-keyword">new</span> A();
+  isRun = obj;
+  <span class="hljs-keyword">return</span> obj;
+}
+<span class="hljs-keyword">const</span> aaa = c().a;
+<span class="hljs-keyword">const</span> aab = c().a;
+aaa === aab <span class="hljs-comment">// true, &#x5F15;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;</span>
+</code></pre>
+<p>Commonjs</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">c</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>{
+
+  }
+
+  <span class="hljs-keyword">return</span> {
+    a: <span class="hljs-keyword">new</span> A()
+  }
+}
+<span class="hljs-keyword">const</span> aaa = c().a;
+<span class="hljs-keyword">const</span> aab = c().a;
+aaa === aab <span class="hljs-comment">// false&#xFF0C; &#x5F15;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;</span>
+</code></pre>
+<p>&#x4E24;&#x8005;&#x8F6C;&#x6362;&#x5C31;&#x662F;&#x7C7B;&#x4F3C;&#x7684;&#x5199;&#x6CD5;</p>
+<p>&#x53C2;&#x8003;es6 module&#x6A21;&#x5757;...</p>
 
                                 
                                 </section>
@@ -656,7 +707,7 @@ B.prototype.__proto__ === A.prototype <span class="hljs-comment">// true &#x7EE7
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"js记录","level":"2.1","depth":1,"next":{"title":"promise, generator, async/await","level":"2.2","depth":1,"path":"js/async.md","ref":"./js/async.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"./README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js/index.md","mtime":"2017-07-11T14:54:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-08T02:37:21.564Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"js记录","level":"2.1","depth":1,"next":{"title":"promise, generator, async/await","level":"2.2","depth":1,"path":"js/async.md","ref":"./js/async.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"./README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"js/index.md","mtime":"2017-09-08T03:00:47.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-08T03:00:56.063Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
